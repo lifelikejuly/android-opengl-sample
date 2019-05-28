@@ -9,11 +9,11 @@ import android.opengl.GLSurfaceView
  */
 class AppGLSurfaceView(context: Context?) : GLSurfaceView(context) {
 
-    lateinit var renderer2 : AppGLRenderer3
+    lateinit var renderer : AppGLRenderer1
 
     init {
         setEGLContextClientVersion(3)
-        renderer2 = AppGLRenderer3()
-        setRenderer(renderer2)
+        renderer = AppGLRenderer1()
+        setRenderer(renderer)
     }
 }

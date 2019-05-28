@@ -23,11 +23,11 @@ class AppGLRenderer1 : GLSurfaceView.Renderer{
 
     override fun onSurfaceChanged(gl: GL10?, width: Int, height: Int) {
         Log.d(TAG,"onSurfaceChanged")
-        GLES30.glViewport(0,0,width,height)
+        GLES30.glViewport(0,0,100,100)
     }
 
     override fun onSurfaceCreated(gl: GL10?, config: EGLConfig?) {
         Log.d(TAG,"onSurfaceCreated")
-        GLES30.glClearColor(0.0f,0.0f,0.0f,1.0f)
+        GLES30.glClearColor(1.0f,0.0f,0.0f,1.0f)
     }
 }
