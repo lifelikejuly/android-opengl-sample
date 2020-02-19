@@ -9,8 +9,17 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    var datas = arrayOf("Triangle", "SixStar", "SixStar2", "Cube", "Cube2", "Cube3", "7", "8", "9", "10", "11", "12", "13")
-
+    var datas = arrayOf(
+        "Triangle",
+        "SixStar",
+        "SixStar2",
+        "Cube",
+        "Cube2",
+        "Cube3",
+        "PointOrLine",
+        "BeltCircle",
+        "9", "10", "11", "12", "13"
+    )
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         list.setOnItemClickListener { parent, view, position, id ->
             run {
                 Intent(this, GLSurfaceViewActivity::class.java).run {
-                    putExtra("gl",datas[position])
+                    putExtra("gl", datas[position])
                     startActivity(this)
                 }
             }
