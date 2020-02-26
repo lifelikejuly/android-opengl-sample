@@ -18,7 +18,13 @@ class MainActivity : AppCompatActivity() {
         "Cube3",
         "PointOrLine",
         "BeltCircle",
-        "9", "10", "11", "12", "13"
+        "Belt",
+        "BeltCircleGLDrawElements",
+        "CircleGLDrawRangeElementsRenderer",
+        "SampleX1",
+        "SampleX2",
+        "SampleX3",
+        "10", "11", "12", "13"
     )
 
 

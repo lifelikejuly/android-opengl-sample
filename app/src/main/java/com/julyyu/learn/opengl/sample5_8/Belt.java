@@ -1,4 +1,4 @@
-package com.julyyu.learn.opengl.sample5_7;
+package com.julyyu.learn.opengl.sample5_8;
 
 import android.opengl.GLES30;
 import android.opengl.GLSurfaceView;
@@ -24,7 +24,7 @@ public class Belt {
 
     FloatBuffer mVertexBuffer;//顶点坐标数据缓冲
     FloatBuffer mColorBuffer;//顶点着色数据缓冲
-    int vCount = 0; //顶点数量
+    int vCount = 0;
 
     public Belt(GLSurfaceView mv) {
         //初始化顶点坐标与着色数据
@@ -36,25 +36,53 @@ public class Belt {
     //初始化顶点坐标与着色数据的方法
     public void initVertexData() {
         //顶点坐标数据的初始化================begin============================
-        int n = 6;
-        vCount = 2 * (n + 1);
-        float angdegBegin = -90;
-        float angdegEnd = 90;
-        float angdegSpan = (angdegEnd - angdegBegin) / n;
+        int n1 = 3;
+        int n2 = 5;
+        vCount = 2 * (n1 + n2 + 2) + 2;    //计算总顶点数
+        float angdegBegin1 = 0;
+        float angdegEnd1 = 90;
+        float angdegSpan1 = (angdegEnd1 - angdegBegin1) / n1;
 
-        float[] vertices = new float[vCount * 3];//顶点坐标数据数组
+        float angdegBegin2 = 180;
+        float angdegEnd2 = 270;
+        float angdegSpan2 = (angdegEnd2 - angdegBegin2) / n2;
+        float[] vertices = new float[vCount * 3];//顶点坐标数据
+
         //坐标数据初始化
         int count = 0;
-        for (float angdeg = angdegBegin; angdeg <= angdegEnd; angdeg += angdegSpan) {
+        for (float angdeg = angdegBegin1; angdeg <= angdegEnd1; angdeg += angdegSpan1) {
             double angrad = Math.toRadians(angdeg);//当前弧度
-            //当前点
-            vertices[count++] = (float) (-0.6f * Constant.UNIT_SIZE * Math.sin(angrad));//顶点x坐标
-            vertices[count++] = (float) (0.6f * Constant.UNIT_SIZE * Math.cos(angrad));//顶点y坐标
-            vertices[count++] = 0;//顶点z坐标
-            //当前点
-            vertices[count++] = (float) (-Constant.UNIT_SIZE * Math.sin(angrad));//顶点x坐标
-            vertices[count++] = (float) (Constant.UNIT_SIZE * Math.cos(angrad));//顶点y坐标
-            vertices[count++] = 0;//顶点z坐标
+            //大圆上的点
+            vertices[count++] = (float) (-0.6f * Constant.UNIT_SIZE * Math.sin(angrad));//顶点坐标
+            vertices[count++] = (float) (0.6f * Constant.UNIT_SIZE * Math.cos(angrad));
+            vertices[count++] = 0;
+            //小圆上的点
+            vertices[count++] = (float) (-Constant.UNIT_SIZE * Math.sin(angrad));//顶点坐标
+            vertices[count++] = (float) (Constant.UNIT_SIZE * Math.cos(angrad));
+            vertices[count++] = 0;
+        }
+
+        //重复第一批三角形的最后一个顶点
+        vertices[count++] = vertices[count - 4];
+        vertices[count++] = vertices[count - 4];
+        vertices[count++] = 0;
+
+        for (float angdeg = angdegBegin2; angdeg <= angdegEnd2; angdeg += angdegSpan2) {
+            double angrad = Math.toRadians(angdeg);//当前弧度
+            //重复第二批三角形的第一个顶点
+            if (angdeg == angdegBegin2) {
+                vertices[count++] = (float) (-0.6f * Constant.UNIT_SIZE * Math.sin(angrad));//顶点坐标
+                vertices[count++] = (float) (0.6f * Constant.UNIT_SIZE * Math.cos(angrad));
+                vertices[count++] = 0;
+            }
+            //大圆上的点
+            vertices[count++] = (float) (-0.6f * Constant.UNIT_SIZE * Math.sin(angrad));//顶点坐标
+            vertices[count++] = (float) (0.6f * Constant.UNIT_SIZE * Math.cos(angrad));
+            vertices[count++] = 0;
+            //小圆上的点
+            vertices[count++] = (float) (-Constant.UNIT_SIZE * Math.sin(angrad));//顶点坐标
+            vertices[count++] = (float) (Constant.UNIT_SIZE * Math.cos(angrad));
+            vertices[count++] = 0;
         }
         //创建顶点坐标数据缓冲
         //vertices.length*4是因为一个整数四个字节
@@ -138,7 +166,7 @@ public class Belt {
         GLES30.glEnableVertexAttribArray(maPositionHandle);
         //启用顶点颜色数据数组
         GLES30.glEnableVertexAttribArray(maColorHandle);
-        //采用三角形条带方式绘制
-        GLES30.glDrawArrays(GLES30.GL_TRIANGLE_STRIP, 0, vCount);
+        //绘制条状物
+        GLES30.glDrawArrays(GLES30.GL_TRIANGLE_STRIP, 0, vCount); //采用三角形条带方式绘制
     }
 }
