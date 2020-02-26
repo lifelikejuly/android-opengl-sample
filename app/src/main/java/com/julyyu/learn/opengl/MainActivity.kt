@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         "SampleX1",
         "SampleX2",
         "SampleX3",
+        "SampleX4",
         "10", "11", "12", "13"
     )
 

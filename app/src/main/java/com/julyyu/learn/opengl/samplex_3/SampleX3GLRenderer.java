@@ -6,7 +6,6 @@ import android.opengl.GLSurfaceView;
 import android.view.MotionEvent;
 
 import com.julyyu.learn.opengl.MatrixState;
-import com.julyyu.learn.opengl.sample5_3.Constant;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
