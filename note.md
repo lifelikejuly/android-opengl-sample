@@ -13,6 +13,10 @@ glDrawArrays 绘制数组
 
 
 
+glEnable glDisable 参数  
+GL_CULL_FACE 背面是否裁剪
+GL_CCW 逆时针卷绕
+GL_CW 顺时针卷绕
 
 
 Matrix
@@ -25,3 +29,4 @@ rotateM 旋转
 setLookAtM 摄像机位置设置
 orthoM 正交投影
 frustumM 透视投影
+

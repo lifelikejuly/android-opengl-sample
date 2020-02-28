@@ -95,7 +95,7 @@ public class FrustumMRenderer extends GLSurfaceView {
             final float BOTTOM = -NEAR * 0.25f;//透视参数bottom
             final float TOP = NEAR * 0.25f;//透视参数top
 
-            Log.i("onSurfaceChanged" , NEAR + " NEAR");
+            Log.i("onSurfaceChanged", NEAR + " NEAR");
 
             //调用此方法计算产生透视投影矩阵
             MatrixState.setProjectFrustum(LEFT, RIGHT, BOTTOM, TOP, NEAR, FAR);

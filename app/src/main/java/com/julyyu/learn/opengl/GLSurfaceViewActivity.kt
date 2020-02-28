@@ -15,6 +15,7 @@ import com.julyyu.learn.opengl.sample5_12.VertexAttribRenderer
 import com.julyyu.learn.opengl.sample5_13.PerspectiveGLRenderer
 import com.julyyu.learn.opengl.sample5_14.FrustumMRenderer
 import com.julyyu.learn.opengl.sample5_15.OffsetRenderer
+import com.julyyu.learn.opengl.sample5_16.ClipRenderer
 import com.julyyu.learn.opengl.sample5_3.CubeGLRenderer
 import com.julyyu.learn.opengl.sample5_4.CubeGLRenderer2
 import com.julyyu.learn.opengl.sample5_5.CubeGLRenderer3
@@ -22,6 +23,7 @@ import com.julyyu.learn.opengl.sample5_6.PointLinerGLRenderer
 import com.julyyu.learn.opengl.sample5_7.BeltCircleGLRenderer
 import com.julyyu.learn.opengl.sample5_8.BeltGLRenderer
 import com.julyyu.learn.opengl.sample5_9.BeltCircleGLDrawElementsRenderer
+import com.julyyu.learn.opengl.sample6_1.BallRenderer
 import com.julyyu.learn.opengl.samplex_1.SampleX1GLRenderer
 import com.julyyu.learn.opengl.samplex_2.SampleX2GLRenderer
 import com.julyyu.learn.opengl.samplex_3.SampleX3GLRenderer
@@ -68,26 +70,32 @@ class GLSurfaceViewActivity : AppCompatActivity() {
                 "Belt" -> {
                     glView = BeltGLRenderer(this@GLSurfaceViewActivity)
                 }
-                "BeltCircleGLDrawElements" ->{
+                "BeltCircleGLDrawElements" -> {
                     glView = BeltCircleGLDrawElementsRenderer(this@GLSurfaceViewActivity)
                 }
-                "CircleGLDrawRangeElementsRenderer" ->{
+                "CircleGLDrawRangeElementsRenderer" -> {
                     glView = CircleGLDrawRangeElementsRenderer(this@GLSurfaceViewActivity)
                 }
-                "LayoutRenderer" ->{
+                "LayoutRenderer" -> {
                     glView = LayoutRenderer(this@GLSurfaceViewActivity)
                 }
-                "VertexAttrib" ->{
+                "VertexAttrib" -> {
                     glView = VertexAttribRenderer(this@GLSurfaceViewActivity)
                 }
-                "Perspective" ->{
+                "Perspective" -> {
                     glView = PerspectiveGLRenderer(this@GLSurfaceViewActivity)
                 }
-                "FrustumM" ->{
+                "FrustumM" -> {
                     glView = FrustumMRenderer(this@GLSurfaceViewActivity)
                 }
-                "Offset" ->{
+                "Offset" -> {
                     glView = OffsetRenderer(this@GLSurfaceViewActivity)
+                }
+                "Clip" -> {
+                    glView = ClipRenderer(this@GLSurfaceViewActivity)
+                }
+                "Ball" -> {
+                    glView = BallRenderer(this@GLSurfaceViewActivity)
                 }
                 "SampleX1" -> {
                     glView = SampleX1GLRenderer(this@GLSurfaceViewActivity)

@@ -26,6 +26,8 @@ class MainActivity : AppCompatActivity() {
         "Perspective",
         "FrustumM",
         "Offset",
+        "Clip",
+        "Ball",
         "SampleX1",
         "SampleX2",
         "SampleX3",
