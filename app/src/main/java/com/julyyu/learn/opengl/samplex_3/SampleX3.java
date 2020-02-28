@@ -91,11 +91,6 @@ public class SampleX3 {
             vertices3[i * 3 + 2] = -1f;
         }
 
-//        float[] vertices4 = new float[vertices.length];
-//        System.arraycopy(vertices, 0, vertices4, 0, vertices.length);
-//        for (int i = 0; i < vertices4.length / 3; i++) {
-//            vertices4[i * 3 + 2] = -1f;
-//        }
 
         float[] zVertices = {
 
@@ -135,6 +130,11 @@ public class SampleX3 {
         System.arraycopy(zVertices, 0, allVertices, vertices.length + vertices2.length + vertices3.length, zVertices.length);
         System.arraycopy(zVertices2, 0, allVertices, vertices.length + vertices2.length + vertices3.length + zVertices.length, zVertices2.length);
         System.arraycopy(zVertices3, 0, allVertices, vertices.length + vertices2.length + vertices3.length + zVertices.length + zVertices2.length, zVertices3.length);
+
+
+        for (int i = 0; i < allVertices.length; i++) {
+            allVertices[i] = allVertices[i] * 0.6f;
+        }
 
         mVertexBuffer = BufferUtil.creatFloatBuffer(allVertices);
 
