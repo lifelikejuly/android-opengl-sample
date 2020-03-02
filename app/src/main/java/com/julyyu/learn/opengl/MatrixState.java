@@ -2,6 +2,10 @@ package com.julyyu.learn.opengl;
 
 import android.opengl.Matrix;
 
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
+
 /**
  * @Author: yuhaocan
  * @CreateDate: 2020-02-16
@@ -11,11 +15,20 @@ public class MatrixState {
     private static float[] mVMatrix = new float[16];//摄像机位置朝向9参数矩阵
     private static float[] currMatrix;//当前变换矩阵
     private static float[] mMVPMatrix = new float[16];//最终的总变换矩阵
+    public static float[] lightLocation = new float[]{0, 0, 0};//光源位置数组
+    public static FloatBuffer lightPositionFB;
 
+    public static float[] lightDirection = new float[]{0, 0, 1};//定向光光源方向
+    public static FloatBuffer lightDirectionFB;
+    public static FloatBuffer cameraFB;    //摄像机位置数据缓冲
 
     static float[][] mStack = new float[10][16];//用于保存变换矩阵的栈
     static int stackTop = -1;//栈顶索引
 
+
+    //设置摄像机
+    static ByteBuffer llbb = ByteBuffer.allocateDirect(3 * 4);
+    static float[] cameraLocation = new float[3];//摄像机位置
 
     //设置摄像机的方法
     public static void setCamera(
@@ -37,6 +50,16 @@ public class MatrixState {
                         tx, ty, tz,    //观察目标点X、Y、Z坐标
                         upx, upy, upz    //up向量在X、Y、Z轴上的分量
                 );
+
+        cameraLocation[0] = cx;
+        cameraLocation[1] = cy;
+        cameraLocation[2] = cz;
+
+        llbb.clear();//清除摄像机位置缓冲
+        llbb.order(ByteOrder.nativeOrder());//设置字节顺序
+        cameraFB = llbb.asFloatBuffer();//转换为float型缓冲
+        cameraFB.put(cameraLocation);//将摄像机位置放入缓冲
+        cameraFB.position(0);  //设置缓冲的起始位置
     }
 
     //设置正交投影的方法
@@ -134,5 +157,34 @@ public class MatrixState {
         return currMatrix;
     }
     ////////////////////////////////////
+
+    //设置灯光位置的方法
+    static ByteBuffer llbbL = ByteBuffer.allocateDirect(3 * 4);
+
+    public static void setLightLocation(float x, float y, float z) {
+        llbbL.clear();
+
+        lightLocation[0] = x;
+        lightLocation[1] = y;
+        lightLocation[2] = z;
+
+        llbbL.order(ByteOrder.nativeOrder());//设置字节顺序
+        lightPositionFB = llbbL.asFloatBuffer();
+        lightPositionFB.put(lightLocation);
+        lightPositionFB.position(0);
+    }
+
+    //设置灯光方向的方法
+    public static void setLightDirection(float x, float y, float z) {
+        llbbL.clear();
+
+        lightDirection[0] = x;
+        lightDirection[1] = y;
+        lightDirection[2] = z;
+        llbbL.order(ByteOrder.nativeOrder());//设置字节顺序
+        lightDirectionFB = llbbL.asFloatBuffer();
+        lightDirectionFB.put(lightDirection);
+        lightDirectionFB.position(0);
+    }
 
 }

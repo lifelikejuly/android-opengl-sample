@@ -28,6 +28,12 @@ class MainActivity : AppCompatActivity() {
         "Offset",
         "Clip",
         "Ball",
+        "Ambient",
+        "Diffuse",
+
+        "TextureMap",
+        "TextureMapGreen",
+        "TextureMapStretch",
         "SampleX1",
         "SampleX2",
         "SampleX3",

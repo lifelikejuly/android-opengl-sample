@@ -24,6 +24,7 @@ public class FrustumMRenderer extends GLSurfaceView {
     private float mPreviousY;//上次的触控位置X坐标
     float xAngle = 20;//总场景绕y轴旋转的角度
     static float NEAR = 1.0f;//透视参数near
+    static int width, height;
 
     public FrustumMRenderer(Context context) {
         super(context);
@@ -45,7 +46,23 @@ public class FrustumMRenderer extends GLSurfaceView {
                 float dy = y - mPreviousY;//计算触控笔X位移
                 xAngle += dy * TOUCH_SCALE_FACTOR;//设置三角形对绕y轴旋转角度
                 break;
-            case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_DOWN:
+                if (NEAR == 1) {
+                    NEAR = 300.0f;
+                } else {
+                    NEAR = 1;
+                }
+                float ratio = (float) width / height;
+                final float FAR = 10000.0f;//透视参数far
+                final float LEFT = -NEAR * ratio * 0.25f;//透视参数left
+                final float RIGHT = NEAR * ratio * 0.25f;//透视参数right
+                final float BOTTOM = -NEAR * 0.25f;//透视参数bottom
+                final float TOP = NEAR * 0.25f;//透视参数top
+
+                Log.i("onSurfaceChanged", NEAR + " NEAR");
+
+                //调用此方法计算产生透视投影矩阵
+                MatrixState.setProjectFrustum(LEFT, RIGHT, BOTTOM, TOP, NEAR, FAR);
 
                 break;
         }
@@ -83,6 +100,8 @@ public class FrustumMRenderer extends GLSurfaceView {
         }
 
         public void onSurfaceChanged(GL10 gl, int width, int height) {
+            FrustumMRenderer.width = width;
+            FrustumMRenderer.height = height;
             //设置视口的大小及位置
             GLES30.glViewport(0, 0, width, height);
             //计算视口的宽高比
@@ -119,13 +138,4 @@ public class FrustumMRenderer extends GLSurfaceView {
         }
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-        if (NEAR == 1) {
-            NEAR = 300.0f;
-        } else {
-            NEAR = 1;
-        }
-    }
 }

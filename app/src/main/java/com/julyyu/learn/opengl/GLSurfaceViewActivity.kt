@@ -1,12 +1,8 @@
 package com.julyyu.learn.opengl
 
-import android.app.Activity
-import android.content.pm.ActivityInfo
 import android.opengl.GLSurfaceView
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.MotionEvent
-import android.view.View
 import com.julyyu.learn.opengl.sample3_1.TriangleGLRenderer
 import com.julyyu.learn.opengl.sample5_1.SixStartGLRenderer
 import com.julyyu.learn.opengl.sample5_10.CircleGLDrawRangeElementsRenderer
@@ -24,6 +20,11 @@ import com.julyyu.learn.opengl.sample5_7.BeltCircleGLRenderer
 import com.julyyu.learn.opengl.sample5_8.BeltGLRenderer
 import com.julyyu.learn.opengl.sample5_9.BeltCircleGLDrawElementsRenderer
 import com.julyyu.learn.opengl.sample6_1.BallRenderer
+import com.julyyu.learn.opengl.sample6_2.AmbientRenderer
+import com.julyyu.learn.opengl.sample6_3.DiffuseRenderer
+import com.julyyu.learn.opengl.sample7_1.TextureMapRenderer
+import com.julyyu.learn.opengl.sample7_2.TextureMapGreenRenderer
+import com.julyyu.learn.opengl.sample7_3.TextureMapStretchRenderer
 import com.julyyu.learn.opengl.samplex_1.SampleX1GLRenderer
 import com.julyyu.learn.opengl.samplex_2.SampleX2GLRenderer
 import com.julyyu.learn.opengl.samplex_3.SampleX3GLRenderer
@@ -96,6 +97,21 @@ class GLSurfaceViewActivity : AppCompatActivity() {
                 }
                 "Ball" -> {
                     glView = BallRenderer(this@GLSurfaceViewActivity)
+                }
+                "Ambient" -> {
+                    glView = AmbientRenderer(this@GLSurfaceViewActivity)
+                }
+                "Diffuse" -> {
+                    glView = DiffuseRenderer(this@GLSurfaceViewActivity)
+                }
+                "TextureMap" -> {
+                    glView = TextureMapRenderer(this@GLSurfaceViewActivity)
+                }
+                "TextureMapGreen" -> {
+                    glView = TextureMapGreenRenderer(this@GLSurfaceViewActivity)
+                }
+                "TextureMapStretch" ->{
+                    glView = TextureMapStretchRenderer(this@GLSurfaceViewActivity)
                 }
                 "SampleX1" -> {
                     glView = SampleX1GLRenderer(this@GLSurfaceViewActivity)
