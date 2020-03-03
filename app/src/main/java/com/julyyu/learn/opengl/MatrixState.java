@@ -25,6 +25,9 @@ public class MatrixState {
     static float[][] mStack = new float[10][16];//用于保存变换矩阵的栈
     static int stackTop = -1;//栈顶索引
 
+    public static float[] lightLocationSun=new float[]{0,0,0};//太阳定位光光源位置
+    public static FloatBuffer lightPositionFBSun;
+
 
     //设置摄像机
     static ByteBuffer llbb = ByteBuffer.allocateDirect(3 * 4);
@@ -185,6 +188,19 @@ public class MatrixState {
         lightDirectionFB = llbbL.asFloatBuffer();
         lightDirectionFB.put(lightDirection);
         lightDirectionFB.position(0);
+    }
+
+    //设置太阳光源位置的方法
+    public static void setLightLocationSun(float x,float y,float z)
+    {
+        lightLocationSun[0]=x;
+        lightLocationSun[1]=y;
+        lightLocationSun[2]=z;
+        ByteBuffer llbb = ByteBuffer.allocateDirect(3*4);
+        llbb.order(ByteOrder.nativeOrder());//设置字节顺序
+        lightPositionFBSun=llbb.asFloatBuffer();
+        lightPositionFBSun.put(lightLocationSun);
+        lightPositionFBSun.position(0);
     }
 
 }

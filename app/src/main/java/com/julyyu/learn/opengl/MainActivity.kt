@@ -34,6 +34,8 @@ class MainActivity : AppCompatActivity() {
         "TextureMap",
         "TextureMapGreen",
         "TextureMapStretch",
+        "TextureMapSample",
+        "TextureMapMore",
         "SampleX1",
         "SampleX2",
         "SampleX3",

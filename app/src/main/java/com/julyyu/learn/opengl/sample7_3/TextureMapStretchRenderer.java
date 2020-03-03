@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.opengl.GLES30;
 import android.opengl.GLSurfaceView;
 import android.opengl.GLUtils;
+import android.util.Log;
 import android.view.MotionEvent;
 
 import com.julyyu.learn.opengl.MatrixState;
@@ -45,7 +46,8 @@ public class TextureMapStretchRenderer extends GLSurfaceView {
         setRenderMode(GLSurfaceView.RENDERMODE_CONTINUOUSLY);//设置渲染模式为主动渲染
     }
 
-    int num = 0;
+    int num1 = 0;
+    int num2 = 0;
 
     //触摸事件回调方法
     @Override
@@ -62,11 +64,30 @@ public class TextureMapStretchRenderer extends GLSurfaceView {
                 }
                 break;
             case MotionEvent.ACTION_DOWN:
-                num += 1;
-                currTextureId = 0;
-                trIndex = 0;
+                if (num2 == 3) {
+                    num2 = 0;
+                    num1 += 1;
+                }
+                if (num1 == 3) {
+                    num1 = 0;
+                }
+
+                switch (num2) {
+                    case 0:
+                        currTextureId = textureREId;
+                        break;
+                    case 1:
+                        currTextureId = textureCTId;
+                        break;
+                    case 2:
+                        currTextureId = textureMIId;
+                        break;
+                }
+                num2 += 1;
+                trIndex = num1;
                 break;
         }
+        Log.i("onTouchEvent", "currTextureId " + currTextureId + " trIndex " + trIndex);
         mPreviousY = y;//记录触控笔位置
         mPreviousX = x;//记录触控笔位置
         return true;

@@ -25,6 +25,8 @@ import com.julyyu.learn.opengl.sample6_3.DiffuseRenderer
 import com.julyyu.learn.opengl.sample7_1.TextureMapRenderer
 import com.julyyu.learn.opengl.sample7_2.TextureMapGreenRenderer
 import com.julyyu.learn.opengl.sample7_3.TextureMapStretchRenderer
+import com.julyyu.learn.opengl.sample7_4.TextureMapSampleRenderer
+import com.julyyu.learn.opengl.sample7_5.TextureMapMoreRenderer
 import com.julyyu.learn.opengl.samplex_1.SampleX1GLRenderer
 import com.julyyu.learn.opengl.samplex_2.SampleX2GLRenderer
 import com.julyyu.learn.opengl.samplex_3.SampleX3GLRenderer
@@ -110,8 +112,14 @@ class GLSurfaceViewActivity : AppCompatActivity() {
                 "TextureMapGreen" -> {
                     glView = TextureMapGreenRenderer(this@GLSurfaceViewActivity)
                 }
-                "TextureMapStretch" ->{
+                "TextureMapStretch" -> {
                     glView = TextureMapStretchRenderer(this@GLSurfaceViewActivity)
+                }
+                "TextureMapSample" -> {
+                    glView = TextureMapSampleRenderer(this@GLSurfaceViewActivity)
+                }
+                "TextureMapMore" -> {
+                    glView = TextureMapMoreRenderer(this@GLSurfaceViewActivity)
                 }
                 "SampleX1" -> {
                     glView = SampleX1GLRenderer(this@GLSurfaceViewActivity)
@@ -134,11 +142,13 @@ class GLSurfaceViewActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         glView?.onResume()
+        Constant.threadFlag = true
     }
 
     override fun onPause() {
         super.onPause()
         glView?.onPause()
+        Constant.threadFlag = false
     }
 
 }
