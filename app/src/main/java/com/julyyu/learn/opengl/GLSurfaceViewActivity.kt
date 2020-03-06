@@ -32,6 +32,16 @@ import com.julyyu.learn.opengl.sample7.sample7_6.TextureMapCompressionGenderer
 import com.julyyu.learn.opengl.sample7.sample7_7.TextureMapPointSpriteRenderer
 import com.julyyu.learn.opengl.sample7.sample7_8.TextureMap3DRenderer
 import com.julyyu.learn.opengl.sample7.sample7_9.TextureMap2DRenderer
+import com.julyyu.learn.opengl.sample8.sample8_1.CylinderRenderer
+import com.julyyu.learn.opengl.sample8.sample8_2.ConeSideRenderer
+import com.julyyu.learn.opengl.sample8.sample8_3.TorusRenderer
+import com.julyyu.learn.opengl.sample8.sample8_4.SpringRenderer
+import com.julyyu.learn.opengl.sample8.sample8_5.SphereRenderer
+import com.julyyu.learn.opengl.sample8.sample8_6.FootballCarbonRenderer
+import com.julyyu.learn.opengl.sample8.sample8_7.BuildingRenderer
+import com.julyyu.learn.opengl.sample9.sample9_1.LoadObjRenderer
+import com.julyyu.learn.opengl.sample9.sample9_2.LoadObj2Renderer
+import com.julyyu.learn.opengl.sample9.sample9_3.LoadObj3Renderer
 import com.julyyu.learn.opengl.samplex.samplex_1.SampleX1GLRenderer
 import com.julyyu.learn.opengl.samplex.samplex_2.SampleX2GLRenderer
 import com.julyyu.learn.opengl.samplex.samplex_3.SampleX3GLRenderer
@@ -129,17 +139,47 @@ class GLSurfaceViewActivity : AppCompatActivity() {
                 "TextureMapCompress" -> {
                     glView = TextureMapCompressionGenderer(this@GLSurfaceViewActivity)
                 }
-                "TextureMapPointSprite" ->{
+                "TextureMapPointSprite" -> {
                     glView = TextureMapPointSpriteRenderer(this@GLSurfaceViewActivity)
                 }
-                "TextureMap3D" ->{
+                "TextureMap3D" -> {
                     glView = TextureMap3DRenderer(this@GLSurfaceViewActivity)
                 }
-                "TextureMap2D" ->{
+                "TextureMap2D" -> {
                     glView = TextureMap2DRenderer(this@GLSurfaceViewActivity)
                 }
-                "TextureMapSampleConfig" ->{
+                "TextureMapSampleConfig" -> {
                     glView = TextureMapSampleConfigRenderer(this@GLSurfaceViewActivity)
+                }
+                "Cylinder" -> {
+                    glView = CylinderRenderer(this@GLSurfaceViewActivity)
+                }
+                "ConeSide" -> {
+                    glView = ConeSideRenderer(this@GLSurfaceViewActivity)
+                }
+                "Torus" ->{
+                    glView = TorusRenderer(this@GLSurfaceViewActivity)
+                }
+                "Spring" ->{
+                    glView = SpringRenderer(this@GLSurfaceViewActivity)
+                }
+                "Sphere" ->{
+                    glView = SphereRenderer(this@GLSurfaceViewActivity)
+                }
+                "FootballCarbon" ->{
+                    glView = FootballCarbonRenderer(this@GLSurfaceViewActivity)
+                }
+                "Building" ->{
+                    glView = BuildingRenderer(this@GLSurfaceViewActivity)
+                }
+                "LoadObj" ->{
+                    glView = LoadObjRenderer(this@GLSurfaceViewActivity)
+                }
+                "LoadObj2" ->{
+                    glView = LoadObj2Renderer(this@GLSurfaceViewActivity)
+                }
+                "LoadObj3" ->{
+                    glView = LoadObj3Renderer(this@GLSurfaceViewActivity)
                 }
                 "SampleX1" -> {
                     glView = SampleX1GLRenderer(this@GLSurfaceViewActivity)

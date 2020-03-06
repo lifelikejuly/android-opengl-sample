@@ -41,11 +41,21 @@ class MainActivity : AppCompatActivity() {
         "TextureMap3D",
         "TextureMap2D",
         "TextureMapSampleConfig",
+        "Cylinder",
+        "ConeSide",
+        "Torus",
+        "Spring",
+        "Sphere",
+        "FootballCarbon",
+        "Building",
+        "LoadObj",
+        "LoadObj2",
+        "LoadObj3",
         "SampleX1",
         "SampleX2",
         "SampleX3",
-        "SampleX4",
-        "10", "11", "12", "13"
+        "SampleX4"
+
     )
 
 
