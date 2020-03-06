@@ -27,6 +27,7 @@ public abstract class BaseDrawSample {
 
     public float yAngle = 0;//绕y轴旋转的角度
     public float xAngle = 0;//绕x轴旋转的角度
+    public float zAngle = 0;//绕z轴旋转的角度
 
     public BaseDrawSample(GLSurfaceView mv) {
         //初始化顶点坐标与着色数据
@@ -36,14 +37,12 @@ public abstract class BaseDrawSample {
     }
 
 
-
-
     //初始化shader
     public void initShader(GLSurfaceView mv) {
         //加载顶点着色器的脚本内容
-        mVertexShader = ShaderUtil.loadFromAssetsFile("vertex.vsh", mv.getResources());
+        mVertexShader = ShaderUtil.loadFromAssetsFile(getVertexFile(), mv.getResources());
         //加载片元着色器的脚本内容
-        mFragmentShader = ShaderUtil.loadFromAssetsFile("frag.fsh", mv.getResources());
+        mFragmentShader = ShaderUtil.loadFromAssetsFile(getFragFile(), mv.getResources());
         //基于顶点着色器与片元着色器创建程序
         mProgram = ShaderUtil.createProgram(mVertexShader, mFragmentShader);
         //获取程序中顶点位置属性引用id
@@ -53,7 +52,9 @@ public abstract class BaseDrawSample {
         //获取程序中总变换矩阵引用id
         muMVPMatrixHandle = GLES30.glGetUniformLocation(mProgram, "uMVPMatrix");
     }
+
     static float[] mMMatrix = new float[16];
+
     public void drawSelf() {
 
         //制定使用某套shader程序
@@ -95,5 +96,13 @@ public abstract class BaseDrawSample {
 
 
     public abstract void initVertexData();
+
+    public String getVertexFile() {
+        return "vertex.vsh";
+    }
+
+    public String getFragFile() {
+        return "frag.fsh";
+    }
 
 }

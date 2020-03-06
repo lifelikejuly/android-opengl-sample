@@ -14,6 +14,7 @@ import java.nio.FloatBuffer;
  * @Author: yuhaocan
  * @CreateDate: 2020-02-26
  */
+/// 正方形
 public class SampleX3 {
 
     int mProgram;//自定义渲染管线着色器程序id

@@ -42,10 +42,12 @@ import com.julyyu.learn.opengl.sample8.sample8_7.BuildingRenderer
 import com.julyyu.learn.opengl.sample9.sample9_1.LoadObjRenderer
 import com.julyyu.learn.opengl.sample9.sample9_2.LoadObj2Renderer
 import com.julyyu.learn.opengl.sample9.sample9_3.LoadObj3Renderer
+import com.julyyu.learn.opengl.sample9.sample9_4.LoadObj4Renderer
 import com.julyyu.learn.opengl.samplex.samplex_1.SampleX1GLRenderer
 import com.julyyu.learn.opengl.samplex.samplex_2.SampleX2GLRenderer
 import com.julyyu.learn.opengl.samplex.samplex_3.SampleX3GLRenderer
 import com.julyyu.learn.opengl.samplex.samplex_4.SampleX4GLRenderer
+import com.julyyu.learn.opengl.samplex.samplex_5.SampleX5GLRenderer
 
 /**
  * @Author:         yuhaocan
@@ -181,6 +183,9 @@ class GLSurfaceViewActivity : AppCompatActivity() {
                 "LoadObj3" ->{
                     glView = LoadObj3Renderer(this@GLSurfaceViewActivity)
                 }
+                "LoadObj4" ->{
+                    glView = LoadObj4Renderer(this@GLSurfaceViewActivity)
+                }
                 "SampleX1" -> {
                     glView = SampleX1GLRenderer(this@GLSurfaceViewActivity)
                 }
@@ -192,6 +197,9 @@ class GLSurfaceViewActivity : AppCompatActivity() {
                 }
                 "SampleX4" -> {
                     glView = SampleX4GLRenderer(this@GLSurfaceViewActivity)
+                }
+                "SampleX5" -> {
+                    glView = SampleX5GLRenderer(this@GLSurfaceViewActivity)
                 }
             }
         }

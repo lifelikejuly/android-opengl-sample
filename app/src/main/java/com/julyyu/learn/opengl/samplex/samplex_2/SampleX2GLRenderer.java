@@ -13,6 +13,7 @@ import javax.microedition.khronos.opengles.GL10;
  * @Author: yuhaocan
  * @CreateDate: 2020-02-25
  */
+/// 三角 圆
 public class SampleX2GLRenderer extends GLSurfaceView {
 
 

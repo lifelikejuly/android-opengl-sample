@@ -10,6 +10,8 @@ import com.julyyu.learn.opengl.util.BufferUtil;
  * @Author: yuhaocan
  * @CreateDate: 2020-02-26
  */
+
+/// 正方形
 public class SampleX4 extends BaseDrawSample {
 
 

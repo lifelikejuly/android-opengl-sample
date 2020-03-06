@@ -11,6 +11,7 @@ import javax.microedition.khronos.opengles.GL10;
  * @Author: yuhaocan
  * @CreateDate: 2020-02-19
  */
+
 public class SampleX1GLRenderer extends GLSurfaceView {
 
     SceneRenderer mRenderer;//自定义渲染器的引用

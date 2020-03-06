@@ -1,6 +1,4 @@
-package com.julyyu.learn.opengl.sample9.sample9_3;
-
-import com.julyyu.learn.opengl.sample9.LoadUtil;
+package com.julyyu.learn.opengl.sample9;
 
 import java.util.Set;
 

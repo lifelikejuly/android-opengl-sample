@@ -12,6 +12,7 @@ import java.nio.FloatBuffer;
  * @Author: yuhaocan
  * @CreateDate: 2020-02-19
  */
+/// 线段
 public class SampleX1 {
 
     int mProgram;//自定义渲染管线程序id

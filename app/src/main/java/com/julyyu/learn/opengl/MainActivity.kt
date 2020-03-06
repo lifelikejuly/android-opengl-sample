@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.ArrayAdapter
+import com.julyyu.learn.opengl.camera.CameraActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -51,10 +52,13 @@ class MainActivity : AppCompatActivity() {
         "LoadObj",
         "LoadObj2",
         "LoadObj3",
+        "LoadObj4",
         "SampleX1",
         "SampleX2",
         "SampleX3",
-        "SampleX4"
+        "SampleX4",
+        "SampleX5",
+        "Camera"
 
     )
 
@@ -68,10 +72,18 @@ class MainActivity : AppCompatActivity() {
             ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, datas)
         list.setOnItemClickListener { parent, view, position, id ->
             run {
-                Intent(this, GLSurfaceViewActivity::class.java).run {
-                    putExtra("gl", datas[position])
-                    startActivity(this)
+                if (datas[position] == "Camera") {
+                    Intent(this, CameraActivity::class.java).run {
+                        putExtra("gl", datas[position])
+                        startActivity(this)
+                    }
+                } else {
+                    Intent(this, GLSurfaceViewActivity::class.java).run {
+                        putExtra("gl", datas[position])
+                        startActivity(this)
+                    }
                 }
+
             }
         }
 
