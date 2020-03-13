@@ -53,6 +53,8 @@ class MainActivity : AppCompatActivity() {
         "LoadObj2",
         "LoadObj3",
         "LoadObj4",
+        "LoadObj5",
+        "LoadObj6",
         "SampleX1",
         "SampleX2",
         "SampleX3",

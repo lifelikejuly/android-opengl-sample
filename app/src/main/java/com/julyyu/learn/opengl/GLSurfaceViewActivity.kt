@@ -43,6 +43,8 @@ import com.julyyu.learn.opengl.sample9.sample9_1.LoadObjRenderer
 import com.julyyu.learn.opengl.sample9.sample9_2.LoadObj2Renderer
 import com.julyyu.learn.opengl.sample9.sample9_3.LoadObj3Renderer
 import com.julyyu.learn.opengl.sample9.sample9_4.LoadObj4Renderer
+import com.julyyu.learn.opengl.sample9.sample9_5.LoadObj5Renderer
+import com.julyyu.learn.opengl.sample9.sample9_6.LoadObj6Renderer
 import com.julyyu.learn.opengl.samplex.samplex_1.SampleX1GLRenderer
 import com.julyyu.learn.opengl.samplex.samplex_2.SampleX2GLRenderer
 import com.julyyu.learn.opengl.samplex.samplex_3.SampleX3GLRenderer
@@ -185,6 +187,12 @@ class GLSurfaceViewActivity : AppCompatActivity() {
                 }
                 "LoadObj4" ->{
                     glView = LoadObj4Renderer(this@GLSurfaceViewActivity)
+                }
+                "LoadObj5" ->{
+                    glView = LoadObj5Renderer(this@GLSurfaceViewActivity)
+                }
+                "LoadObj6" ->{
+                    glView = LoadObj6Renderer(this@GLSurfaceViewActivity)
                 }
                 "SampleX1" -> {
                     glView = SampleX1GLRenderer(this@GLSurfaceViewActivity)

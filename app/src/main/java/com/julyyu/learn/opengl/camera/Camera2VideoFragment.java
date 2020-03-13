@@ -89,7 +89,7 @@ public class Camera2VideoFragment extends Fragment
     /**
      * An {@link AutoFitTextureView} for camera preview.
      */
-    private AutoFitTextureView mTextureView;
+    private CameraGLSurfaceRenderer mTextureView;
 
     /**
      * Button to record video
@@ -271,10 +271,16 @@ public class Camera2VideoFragment extends Fragment
 
     @Override
     public void onViewCreated(final View view, Bundle savedInstanceState) {
-        mTextureView = (AutoFitTextureView) view.findViewById(R.id.texture);
+        mTextureView =  view.findViewById(R.id.texture);
         mButtonVideo = (Button) view.findViewById(R.id.video);
         mButtonVideo.setOnClickListener(this);
         view.findViewById(R.id.info).setOnClickListener(this);
+        mTextureView.setSurfaceTextureListener(new CameraGLSurfaceRenderer.SurfaceTextureListener() {
+            @Override
+            public void onSurfaceTextureAvailable() {
+                openCamera(1920,1080);
+            }
+        });
     }
 
     @Override
@@ -284,7 +290,7 @@ public class Camera2VideoFragment extends Fragment
         if (mTextureView.isAvailable()) {
             openCamera(mTextureView.getWidth(), mTextureView.getHeight());
         } else {
-            mTextureView.setSurfaceTextureListener(mSurfaceTextureListener);
+//            mTextureView.setSurfaceTextureListener(mSurfaceTextureListener);
         }
     }
 
@@ -562,7 +568,7 @@ public class Camera2VideoFragment extends Fragment
             matrix.postScale(scale, scale, centerX, centerY);
             matrix.postRotate(90 * (rotation - 2), centerX, centerY);
         }
-        mTextureView.setTransform(matrix);
+//        mTextureView.setTransform(matrix);
     }
 
     private void setUpMediaRecorder() throws IOException {
