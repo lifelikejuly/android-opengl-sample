@@ -50,6 +50,7 @@ import com.julyyu.learn.opengl.samplex.samplex_2.SampleX2GLRenderer
 import com.julyyu.learn.opengl.samplex.samplex_3.SampleX3GLRenderer
 import com.julyyu.learn.opengl.samplex.samplex_4.SampleX4GLRenderer
 import com.julyyu.learn.opengl.samplex.samplex_5.SampleX5GLRenderer
+import com.julyyu.learn.opengl.samplex.samplex_6.SampleX6GLRenderer
 
 /**
  * @Author:         yuhaocan
@@ -208,6 +209,9 @@ class GLSurfaceViewActivity : AppCompatActivity() {
                 }
                 "SampleX5" -> {
                     glView = SampleX5GLRenderer(this@GLSurfaceViewActivity)
+                }
+                "SampleX6" -> {
+                    glView = SampleX6GLRenderer(this@GLSurfaceViewActivity)
                 }
             }
         }
