@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
 import android.widget.ArrayAdapter
-import com.julyyu.learn.opengl.camera.CameraActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 

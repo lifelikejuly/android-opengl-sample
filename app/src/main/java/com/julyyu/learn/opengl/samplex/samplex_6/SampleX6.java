@@ -49,7 +49,6 @@ public class SampleX6 {
                         1, 1, 0,
                         1, -1, 0,
                 };
-
         //创建顶点坐标数据缓冲
         //vertices.length*4是因为一个整数四个字节
         ByteBuffer vbb = ByteBuffer.allocateDirect(vertices.length * 4);
@@ -88,9 +87,9 @@ public class SampleX6 {
     //初始化着色器
     public void initShader(GLSurfaceView mv) {
         //加载顶点着色器的脚本内容
-        mVertexShader = ShaderUtil.loadFromAssetsFile("vertex_sample7_1.vsh", mv.getResources());
+        mVertexShader = ShaderUtil.loadFromAssetsFile("samplex6/vertex_samplex6.vsh", mv.getResources());
         //加载片元着色器的脚本内容
-        mFragmentShader = ShaderUtil.loadFromAssetsFile("frag_sample7_1.fsh", mv.getResources());
+        mFragmentShader = ShaderUtil.loadFromAssetsFile("samplex6/frag_samplex6.fsh", mv.getResources());
         //基于顶点着色器与片元着色器创建程序
         mProgram = ShaderUtil.createProgram(mVertexShader, mFragmentShader);
         //获取程序中顶点位置属性引用

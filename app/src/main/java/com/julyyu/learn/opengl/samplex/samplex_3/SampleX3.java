@@ -155,9 +155,9 @@ public class SampleX3 {
     //初始化shader
     public void initShader(GLSurfaceView mv) {
         //加载顶点着色器的脚本内容
-        mVertexShader = ShaderUtil.loadFromAssetsFile("vertex.vsh", mv.getResources());
+        mVertexShader = ShaderUtil.loadFromAssetsFile("samplex3/vertex_samplex3.vsh", mv.getResources());
         //加载片元着色器的脚本内容
-        mFragmentShader = ShaderUtil.loadFromAssetsFile("frag.fsh", mv.getResources());
+        mFragmentShader = ShaderUtil.loadFromAssetsFile("samplex3/frag_samplex3.fsh", mv.getResources());
         //基于顶点着色器与片元着色器创建程序
         mProgram = ShaderUtil.createProgram(mVertexShader, mFragmentShader);
         //获取程序中顶点位置属性引用id

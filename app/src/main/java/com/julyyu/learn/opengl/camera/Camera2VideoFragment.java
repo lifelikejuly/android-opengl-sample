@@ -215,7 +215,7 @@ public class Camera2VideoFragment extends Fragment
     }
 
     /**
-     * In this sample, we choose a video size with 3x4 aspect ratio. Also, we don't use sizes
+     * In this samplex1, we choose a video size with 3x4 aspect ratio. Also, we don't use sizes
      * larger than 1080p, since MediaRecorder cannot handle such a high-resolution video.
      *
      * @param choices The list of available sizes
