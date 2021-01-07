@@ -1,4 +1,4 @@
-package com.julyyu.learn.opengl.samplex.samplex_6;
+package com.julyyu.learn.opengl.samplex.samplex_7;
 
 import android.opengl.GLES30;
 import android.opengl.GLSurfaceView;
@@ -15,7 +15,7 @@ import java.nio.FloatBuffer;
  * @CreateDate: 2020-03-06
  * 2D图片展示
  */
-public class SampleX6 {
+public class SampleX7 {
 
     int mProgram;//自定义渲染管线程序id
     int muMVPMatrixHandle;//总变换矩阵引用
@@ -28,9 +28,7 @@ public class SampleX6 {
     FloatBuffer mTexCoorBuffer;//顶点纹理坐标数据缓冲
     int vCount = 0;
 
-    int iShaderType = 0;
-
-    public SampleX6(GLSurfaceView mv) {
+    public SampleX7(GLSurfaceView mv) {
         //初始化顶点数据的方法
         initVertexData();
         //初始化着色器的方法
@@ -89,9 +87,9 @@ public class SampleX6 {
     //初始化着色器
     public void initShader(GLSurfaceView mv) {
         //加载顶点着色器的脚本内容
-        mVertexShader = ShaderUtil.loadFromAssetsFile("samplex6/vertex_samplex6.vsh", mv.getResources());
+        mVertexShader = ShaderUtil.loadFromAssetsFile("samplex7/vertex_samplex7.vsh", mv.getResources());
         //加载片元着色器的脚本内容
-        mFragmentShader = ShaderUtil.loadFromAssetsFile("samplex6/frag_samplex6.fsh", mv.getResources());
+        mFragmentShader = ShaderUtil.loadFromAssetsFile("samplex7/frag_samplex7.fsh", mv.getResources());
         //基于顶点着色器与片元着色器创建程序
         mProgram = ShaderUtil.createProgram(mVertexShader, mFragmentShader);
         //获取程序中顶点位置属性引用
@@ -103,14 +101,20 @@ public class SampleX6 {
     }
 
     public void drawSelf(int texId) {
-
-
-
         //指定使用某套shader程序
         GLES30.glUseProgram(mProgram);
 
         MatrixState.setInitStack();
 
+        //设置沿Z轴正向位移1
+//        MatrixState.translate(0, 0, 1);
+
+//        //设置绕y轴旋转
+//        MatrixState.rotate(yAngle, 0, 1, 0);
+//        //设置绕z轴旋转
+//        MatrixState.rotate(zAngle, 0, 0, 1);
+//        //设置绕x轴旋转
+//        MatrixState.rotate(xAngle, 1, 0, 0);
         //将最终变换矩阵传入渲染管线
         GLES30.glUniformMatrix4fv(muMVPMatrixHandle, 1, false, MatrixState.getFinalMatrix(), 0);
         //将顶点位置数据传送进渲染管线
@@ -133,12 +137,6 @@ public class SampleX6 {
                         2 * 4,
                         mTexCoorBuffer
                 );
-
-        int iFrameLocation = GLES30.glGetUniformLocation(mProgram, "iShaderType");
-        int shaderType = iShaderType % 11;
-        GLES30.glUniform1i(iFrameLocation, shaderType);
-
-
         //允许顶点位置数据数组
         GLES30.glEnableVertexAttribArray(maPositionHandle);//启用顶点位置数据
         GLES30.glEnableVertexAttribArray(maTexCoorHandle);//启用顶点纹理坐标数据
@@ -147,7 +145,5 @@ public class SampleX6 {
         GLES30.glBindTexture(GLES30.GL_TEXTURE_2D, texId);//绑定指定的纹理id
         //以三角形的方式填充
         GLES30.glDrawArrays(GLES30.GL_TRIANGLES, 0, vCount);
-
-
     }
 }

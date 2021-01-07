@@ -81,7 +81,13 @@ class MainActivity : AppCompatActivity() {
             "SampleX3",
             "SampleX4",
             "SampleX5",
-            "SampleX6"
+            "SampleX6",
+            "SampleX7",
+            "SampleX8",
+            "SampleX9",
+            "SampleX10",
+            "SampleX11",
+            "SampleX12"
         )
     }
 

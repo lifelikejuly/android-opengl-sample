@@ -1,4 +1,4 @@
-package com.julyyu.learn.opengl.samplex.samplex_6;
+package com.julyyu.learn.opengl.samplex.samplex_8;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -6,7 +6,6 @@ import android.graphics.BitmapFactory;
 import android.opengl.GLES30;
 import android.opengl.GLSurfaceView;
 import android.opengl.GLUtils;
-import android.view.MotionEvent;
 
 import com.julyyu.learn.opengl.MatrixState;
 import com.julyyu.learn.opengl.R;
@@ -24,15 +23,16 @@ import javax.microedition.khronos.opengles.GL10;
  */
 
 
-public class SampleX6GLRenderer extends GLSurfaceView {
+public class SampleX8GLRenderer extends GLSurfaceView {
 
 
     private SceneRenderer mRenderer;//场景渲染器
 
 
     int textureId;//系统分配的纹理id
-
-    public SampleX6GLRenderer(Context context) {
+    int width = 0;
+    int height = 0;
+    public SampleX8GLRenderer(Context context) {
         super(context);
         this.setEGLContextClientVersion(3);    //设置使用OPENGL ES3.0
         mRenderer = new SceneRenderer();    //创建场景渲染器
@@ -42,16 +42,18 @@ public class SampleX6GLRenderer extends GLSurfaceView {
 
 
     private class SceneRenderer implements Renderer {
-        SampleX6 texRect;//纹理三角形对象引用
+        SampleX8 texRect;//纹理三角形对象引用
 
         public void onDrawFrame(GL10 gl) {
             //清除深度缓冲与颜色缓冲
             GLES30.glClear(GLES30.GL_DEPTH_BUFFER_BIT | GLES30.GL_COLOR_BUFFER_BIT);
             //绘制纹理三角形
-            texRect.drawSelf(textureId);
+            texRect.drawSelf(textureId,width,height);
         }
 
         public void onSurfaceChanged(GL10 gl, int width, int height) {
+            SampleX8GLRenderer.this.width = width;
+            SampleX8GLRenderer.this.height = height;
             //设置视窗大小及位置
             GLES30.glViewport(0, 0, width, height);
             //计算GLSurfaceView的宽高比
@@ -66,7 +68,7 @@ public class SampleX6GLRenderer extends GLSurfaceView {
             //设置屏幕背景色RGBA
             GLES30.glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
             //创建三角形对对象
-            texRect = new SampleX6(SampleX6GLRenderer.this);
+            texRect = new SampleX8(SampleX8GLRenderer.this);
             //打开深度检测
 //            GLES30.glEnable(GLES30.GL_DEPTH_TEST);
             //初始化纹理
@@ -119,12 +121,4 @@ public class SampleX6GLRenderer extends GLSurfaceView {
         bitmapTmp.recycle();          //纹理加载成功后释放内存中的纹理图
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        if(event.getAction() == MotionEvent.ACTION_UP){
-            mRenderer.texRect.iShaderType ++;
-            return true;
-        }
-        return super.onTouchEvent(event);
-    }
 }

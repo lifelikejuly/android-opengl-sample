@@ -46,11 +46,17 @@ import com.julyyu.learn.opengl.sample9.sample9_4.LoadObj4Renderer
 import com.julyyu.learn.opengl.sample9.sample9_5.LoadObj5Renderer
 import com.julyyu.learn.opengl.sample9.sample9_6.LoadObj6Renderer
 import com.julyyu.learn.opengl.samplex.samplex_1.SampleX1GLRenderer
+import com.julyyu.learn.opengl.samplex.samplex_10.SampleX10GLRenderer
+import com.julyyu.learn.opengl.samplex.samplex_11.SampleX11GLRenderer
+import com.julyyu.learn.opengl.samplex.samplex_12.SampleX12GLRenderer
 import com.julyyu.learn.opengl.samplex.samplex_2.SampleX2GLRenderer
 import com.julyyu.learn.opengl.samplex.samplex_3.SampleX3GLRenderer
 import com.julyyu.learn.opengl.samplex.samplex_4.SampleX4GLRenderer
 import com.julyyu.learn.opengl.samplex.samplex_5.SampleX5GLRenderer
 import com.julyyu.learn.opengl.samplex.samplex_6.SampleX6GLRenderer
+import com.julyyu.learn.opengl.samplex.samplex_7.SampleX7GLRenderer
+import com.julyyu.learn.opengl.samplex.samplex_8.SampleX8GLRenderer
+import com.julyyu.learn.opengl.samplex.samplex_9.SampleX9GLRenderer
 
 /**
  * @Author:         yuhaocan
@@ -212,6 +218,24 @@ class GLSurfaceViewActivity : AppCompatActivity() {
                 }
                 "SampleX6" -> {
                     glView = SampleX6GLRenderer(this@GLSurfaceViewActivity)
+                }
+                "SampleX7" -> {
+                    glView = SampleX7GLRenderer(this@GLSurfaceViewActivity)
+                }
+                "SampleX8" -> {
+                    glView = SampleX8GLRenderer(this@GLSurfaceViewActivity)
+                }
+                "SampleX9" -> {
+                    glView = SampleX9GLRenderer(this@GLSurfaceViewActivity)
+                }
+                "SampleX10" -> {
+                    glView = SampleX10GLRenderer(this@GLSurfaceViewActivity)
+                }
+                "SampleX11" -> {
+                    glView = SampleX11GLRenderer(this@GLSurfaceViewActivity)
+                }
+                "SampleX12" -> {
+                    glView = SampleX12GLRenderer(this@GLSurfaceViewActivity)
                 }
             }
         }
