@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.opengl.GLES30;
 import android.opengl.GLSurfaceView;
 import android.opengl.GLUtils;
+import android.util.Log;
 import android.view.MotionEvent;
 
 import com.julyyu.learn.opengl.MatrixState;
@@ -123,8 +124,8 @@ public class SampleX6GLRenderer extends GLSurfaceView {
     public boolean onTouchEvent(MotionEvent event) {
         if(event.getAction() == MotionEvent.ACTION_UP){
             mRenderer.texRect.iShaderType ++;
-            return true;
+            Log.i("Tag"," ---- " + mRenderer.texRect.iShaderType);
         }
-        return super.onTouchEvent(event);
+        return true;
     }
 }

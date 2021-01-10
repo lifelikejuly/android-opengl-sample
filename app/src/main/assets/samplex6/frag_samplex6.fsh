@@ -5,6 +5,7 @@ in vec2 vTextureCoord;//接收从顶点着色器过来的参数
 out vec4 fragColor;
 
 uniform int iShaderType;
+uniform float fProgress;
 
 #define t iShaderType
 
@@ -122,7 +123,7 @@ void main()
         float maxScale9 = 1.8;
 
         //进度
-        float progress9 = mod(0.2, duration9) / duration9;// 0~1
+        float progress9 = mod(fProgress, duration9) / duration9;// 0~1
         //当前的透明度
         float alpha9 = maxAlpha9 * (1.0 - progress9);
         //当前的放大比例
@@ -146,32 +147,31 @@ void main()
 
         // 11 色散
         //周期
-        float duration = 0.7;
-        //生成的第二个图层的最大透明度
-        float maxAlphax = 0.4;
-        //第二个图层放大的最大比率
-        float maxScalex = 1.8;
+        float duration10 = 0.7;
+        //放大的最大比例
+        float maxScale10 = 1.1;
+        //颜色偏移值
+        float offset10 = 0.02;
 
-        //进度
-        float progressx = mod(0.2, duration) / duration;// 0~1
-        //当前的透明度
-        float alpha = maxAlphax * (1.0 - progressx);
-        //当前的放大比例
-        float scale = 1.0 + (maxScalex - 1.0) * progressx;
+        //当前时间在整个周期中的进度,在0~1
+        float progress10 = mod(fProgress, duration10) / duration10; // 0~1
+        //具体的偏移量
+        vec2 offsetCoords10 = vec2(offset10, offset10) * progress10;
+        //图层放大缩小的比例
+        float scale10 = 1.0 + (maxScale10 - 1.0) * progress10;
 
-        //根据放大比例获取对应的x、y值坐标
-        float weakX = 0.5 + (vTextureCoord.x - 0.5) / scale;
-        float weakY = 0.5 + (vTextureCoord.y - 0.5) / scale;
-        //新的图层纹理坐标
-        vec2 weakTextureCoords = vec2(weakX, weakY);
+        //获取缩放之后实际纹理坐标
+        vec2 ScaleTextureCoords10 = vec2(0.5, 0.5) + (vTextureCoord - vec2(0.5, 0.5)) / scale10;
 
-        //新图层纹理坐标对应的纹理像素值
-        vec4 weakMask = texture(sTexture, weakTextureCoords);
+        //设置缩放之后的纹理坐标和经过具体的颜色偏移坐标
+        //三组分别代表RGB不同方向的纹理像素值
+        vec4 maskR10 = texture(sTexture, ScaleTextureCoords10 + offsetCoords10);
+        vec4 maskB10 = texture(sTexture, ScaleTextureCoords10 - offsetCoords10);
+        vec4 mask10 = texture(sTexture, ScaleTextureCoords10);
 
-        vec4 mask = texture(sTexture, vTextureCoord);
+        //根据不同的纹理坐标值得到经过颜色偏移之后的颜色
+        fragColor = vec4(maskR10.r, mask10.g, maskB10.b, mask10.a);
 
-        //纹理像素值的混合公式，获得混合后的实际颜色
-        fragColor = mask * (1.0 - alpha) + weakMask * alpha;
         break;
     }
 

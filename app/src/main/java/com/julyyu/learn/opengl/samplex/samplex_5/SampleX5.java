@@ -2,12 +2,8 @@ package com.julyyu.learn.opengl.samplex.samplex_5;
 
 import android.opengl.GLES30;
 import android.opengl.GLSurfaceView;
-import android.opengl.Matrix;
-import android.util.Log;
 
-import com.julyyu.learn.opengl.BaseDrawSample;
 import com.julyyu.learn.opengl.MatrixState;
-import com.julyyu.learn.opengl.util.BufferUtil;
 import com.julyyu.learn.opengl.util.ShaderUtil;
 
 import java.nio.ByteBuffer;

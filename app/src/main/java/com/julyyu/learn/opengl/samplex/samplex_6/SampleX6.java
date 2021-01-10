@@ -29,6 +29,7 @@ public class SampleX6 {
     int vCount = 0;
 
     int iShaderType = 0;
+    float progress = 0f;
 
     public SampleX6(GLSurfaceView mv) {
         //初始化顶点数据的方法
@@ -105,7 +106,7 @@ public class SampleX6 {
     public void drawSelf(int texId) {
 
 
-
+        progress += 0.02;
         //指定使用某套shader程序
         GLES30.glUseProgram(mProgram);
 
@@ -137,6 +138,10 @@ public class SampleX6 {
         int iFrameLocation = GLES30.glGetUniformLocation(mProgram, "iShaderType");
         int shaderType = iShaderType % 11;
         GLES30.glUniform1i(iFrameLocation, shaderType);
+
+        int fProgress = GLES30.glGetUniformLocation(mProgram, "fProgress");
+        progress += 0.2f;
+        GLES30.glUniform1f(fProgress, progress);
 
 
         //允许顶点位置数据数组
