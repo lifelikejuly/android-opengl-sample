@@ -38,7 +38,8 @@ public class SampleX1GLRenderer extends GLSurfaceView {
         @Override
         public void onSurfaceCreated(GL10 gl, EGLConfig config) {
             //设置屏幕背景色RGBA
-            GLES30.glClearColor(0, 0, 0, 1.0f);
+            GLES30.glClearColor(1, 1, 1, 1.0f); // 白色
+//            GLES30.glClearColor(0, 0, 0, 1.0f);
             //创建三角形对对象
             sampleX1 = new SampleX1(SampleX1GLRenderer.this);
             //打开深度检测

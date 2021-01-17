@@ -2,7 +2,7 @@ package com.julyyu.learn.opengl
 
 import android.opengl.GLSurfaceView
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.julyyu.learn.opengl.sample3.sample3_1.TriangleGLRenderer
 import com.julyyu.learn.opengl.sample5.sample5_1.SixStartGLRenderer
 import com.julyyu.learn.opengl.sample5.sample5_10.CircleGLDrawRangeElementsRenderer
@@ -49,6 +49,8 @@ import com.julyyu.learn.opengl.samplex.samplex_1.SampleX1GLRenderer
 import com.julyyu.learn.opengl.samplex.samplex_10.SampleX10GLRenderer
 import com.julyyu.learn.opengl.samplex.samplex_11.SampleX11GLRenderer
 import com.julyyu.learn.opengl.samplex.samplex_12.SampleX12GLRenderer
+import com.julyyu.learn.opengl.samplex.samplex_13.SampleX13GLRenderer
+import com.julyyu.learn.opengl.samplex.samplex_14.SampleX14GLRenderer
 import com.julyyu.learn.opengl.samplex.samplex_2.SampleX2GLRenderer
 import com.julyyu.learn.opengl.samplex.samplex_3.SampleX3GLRenderer
 import com.julyyu.learn.opengl.samplex.samplex_4.SampleX4GLRenderer
@@ -236,6 +238,12 @@ class GLSurfaceViewActivity : AppCompatActivity() {
                 }
                 "SampleX12" -> {
                     glView = SampleX12GLRenderer(this@GLSurfaceViewActivity)
+                }
+                "SampleX13" -> {
+                    glView = SampleX13GLRenderer(this@GLSurfaceViewActivity)
+                }
+                "SampleX14" -> {
+                    glView = SampleX14GLRenderer(this@GLSurfaceViewActivity)
                 }
             }
         }

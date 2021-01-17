@@ -31,8 +31,8 @@
             android:name=".GLSurfaceViewActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".camera.CameraActivity"
-            android:screenOrientation="portrait" />
+            android:name=".camera.camerax.CameraXActivity"
+            />
     </application>
 
 

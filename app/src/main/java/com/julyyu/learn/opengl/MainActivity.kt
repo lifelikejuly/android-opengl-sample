@@ -2,9 +2,10 @@ package com.julyyu.learn.opengl
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
 import android.widget.ArrayAdapter
+import androidx.appcompat.app.AppCompatActivity
+import com.julyyu.learn.opengl.camera.camerax.CameraXActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -87,7 +88,12 @@ class MainActivity : AppCompatActivity() {
             "SampleX9",
             "SampleX10",
             "SampleX11",
-            "SampleX12"
+            "SampleX12",
+            "SampleX13",
+            "SampleX14"
+        )
+        it["相机渲染"] = arrayOf(
+            "CameraX"
         )
     }
 
@@ -107,12 +113,20 @@ class MainActivity : AppCompatActivity() {
 
         list.setOnItemClickListener { parent, view, position, id ->
             run {
+
                 if(TextUtils.isEmpty(sample)){
                     Intent(this, MainActivity::class.java).run {
                         putExtra("sample", demo.keys.toList()[position])
                         startActivity(this)
                     }
                 }else{
+                    if (sample == "相机渲染") {
+                        Intent(this, CameraXActivity::class.java).run {
+                            putExtra("gl", datas[position])
+                            startActivity(this)
+                        }
+                        return@setOnItemClickListener
+                    }
                     Intent(this, GLSurfaceViewActivity::class.java).run {
                         putExtra("gl", demo[sample]!![position])
                         startActivity(this)
