@@ -5,7 +5,8 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
-import com.julyyu.learn.opengl.camera.camerax.CameraXActivity
+import com.julyyu.learn.opengl.camera.camerax.GLCameraXActivity
+import com.julyyu.learn.opengl.camera.demo.CameraDemoActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -69,12 +70,50 @@ class MainActivity : AppCompatActivity() {
 
     val demo = HashMap<String, Array<String>>().also {
         it["书籍Demo"] = arrayOf(
-            "SampleX1",
-            "SampleX2",
-            "SampleX3",
-            "SampleX4",
-            "SampleX5",
-            "SampleX6"
+            "Triangle",
+            "SixStar",
+            "SixStar2",
+            "Cube",
+            "Cube2",
+            "Cube3",
+            "PointOrLine",
+            "BeltCircle",
+            "Belt",
+            "BeltCircleGLDrawElements",
+            "CircleGLDrawRangeElementsRenderer",
+            "LayoutRenderer",
+            "VertexAttrib",
+            "Perspective",
+            "FrustumM",
+            "Offset",
+            "Clip",
+            "Ball",
+            "Ambient",
+            "Diffuse",
+
+            "TextureMap",
+            "TextureMapGreen",
+            "TextureMapStretch",
+            "TextureMapSample",
+            "TextureMapMore",
+            "TextureMapCompress",
+            "TextureMapPointSprite",
+            "TextureMap3D",
+            "TextureMap2D",
+            "TextureMapSampleConfig",
+            "Cylinder",
+            "ConeSide",
+            "Torus",
+            "Spring",
+            "Sphere",
+            "FootballCarbon",
+            "Building",
+            "LoadObj",
+            "LoadObj2",
+            "LoadObj3",
+            "LoadObj4",
+            "LoadObj5",
+            "LoadObj6"
         )
         it["学习例子"] = arrayOf(
             "SampleX1",
@@ -90,10 +129,12 @@ class MainActivity : AppCompatActivity() {
             "SampleX11",
             "SampleX12",
             "SampleX13",
-            "SampleX14"
+            "SampleX14",
+            "SampleX15"
         )
         it["相机渲染"] = arrayOf(
-            "CameraX"
+            "GLCameraX",
+            "Camerax"
         )
     }
 
@@ -121,7 +162,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }else{
                     if (sample == "相机渲染") {
-                        Intent(this, CameraXActivity::class.java).run {
+                        Intent(this, GLCameraXActivity::class.java).run {
                             putExtra("gl", datas[position])
                             startActivity(this)
                         }

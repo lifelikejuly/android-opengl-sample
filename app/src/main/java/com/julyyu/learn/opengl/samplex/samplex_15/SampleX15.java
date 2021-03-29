@@ -1,4 +1,4 @@
-package com.julyyu.learn.opengl.sample7.sample7_1;
+package com.julyyu.learn.opengl.samplex.samplex_15;
 
 import android.opengl.GLES30;
 import android.opengl.GLSurfaceView;
@@ -12,9 +12,10 @@ import java.nio.FloatBuffer;
 
 /**
  * @Author: JulyYu
- * @CreateDate: 2020-03-01
+ * @CreateDate: 2020-03-06
+ * 2D图片展示
  */
-public class Triangle {
+public class SampleX15 {
 
     int mProgram;//自定义渲染管线程序id
     int muMVPMatrixHandle;//总变换矩阵引用
@@ -26,11 +27,13 @@ public class Triangle {
     FloatBuffer mVertexBuffer;//顶点坐标数据缓冲
     FloatBuffer mTexCoorBuffer;//顶点纹理坐标数据缓冲
     int vCount = 0;
-    float xAngle = 0;//绕x轴旋转的角度
-    float yAngle = 0;//绕y轴旋转的角度
-    float zAngle = 0;//绕z轴旋转的角度
 
-    public Triangle(GLSurfaceView mv) {
+    final long START_TIME = System.currentTimeMillis();
+    int iFrame = 0;
+    float mProgress = 0f;
+
+
+    public SampleX15(GLSurfaceView mv) {
         //初始化顶点数据的方法
         initVertexData();
         //初始化着色器的方法
@@ -40,15 +43,17 @@ public class Triangle {
     //初始化顶点数据的方法
     public void initVertexData() {
         //顶点坐标数据的初始化================begin============================
-        vCount = 3;
-        final float UNIT_SIZE = 0.15f;
+        vCount = 6;
         float vertices[] = new float[]
                 {
-                        0 * UNIT_SIZE, 11 * UNIT_SIZE, 0,
-                        -11 * UNIT_SIZE, -11 * UNIT_SIZE, 0,
-                        11 * UNIT_SIZE, -11 * UNIT_SIZE, 0,
-                };
+                        -1, 1, 0,
+                        -1, -1, 0,
+                        1, -1, 0,
 
+                        -1, 1, 0,
+                        1, 1, 0,
+                        1, -1, 0,
+                };
         //创建顶点坐标数据缓冲
         //vertices.length*4是因为一个整数四个字节
         ByteBuffer vbb = ByteBuffer.allocateDirect(vertices.length * 4);
@@ -63,9 +68,14 @@ public class Triangle {
         //顶点纹理坐标数据的初始化================begin============================
         float texCoor[] = new float[]//顶点颜色值数组，每个顶点4个色彩值RGBA
                 {
-                        1f, 0,
+                        0, 0,
                         0, 1,
-                        1, 1
+                        1, 1,
+
+                        0, 0,
+                        1, 0,
+                        1, 1,
+
                 };
         //创建顶点纹理坐标数据缓冲
         ByteBuffer cbb = ByteBuffer.allocateDirect(texCoor.length * 4);
@@ -82,9 +92,9 @@ public class Triangle {
     //初始化着色器
     public void initShader(GLSurfaceView mv) {
         //加载顶点着色器的脚本内容
-        mVertexShader = ShaderUtil.loadFromAssetsFile("vertex_sample7_1.vsh", mv.getResources());
+        mVertexShader = ShaderUtil.loadFromAssetsFile("samplex15/vertex_samplex15.vsh", mv.getResources());
         //加载片元着色器的脚本内容
-        mFragmentShader = ShaderUtil.loadFromAssetsFile("frag_sample7_1.fsh", mv.getResources());
+        mFragmentShader = ShaderUtil.loadFromAssetsFile("samplex15/frag_samplex15.fsh", mv.getResources());
         //基于顶点着色器与片元着色器创建程序
         mProgram = ShaderUtil.createProgram(mVertexShader, mFragmentShader);
         //获取程序中顶点位置属性引用
@@ -95,21 +105,11 @@ public class Triangle {
         muMVPMatrixHandle = GLES30.glGetUniformLocation(mProgram, "uMVPMatrix");
     }
 
-    public void drawSelf(int texId) {
+    public void drawSelf(int texId,int width,int height) {
         //指定使用某套shader程序
         GLES30.glUseProgram(mProgram);
 
         MatrixState.setInitStack();
-
-        //设置沿Z轴正向位移1
-        MatrixState.translate(0, 0, 1);
-
-        //设置绕y轴旋转
-        MatrixState.rotate(yAngle, 0, 1, 0);
-        //设置绕z轴旋转
-        MatrixState.rotate(zAngle, 0, 0, 1);
-        //设置绕x轴旋转
-        MatrixState.rotate(xAngle, 1, 0, 0);
         //将最终变换矩阵传入渲染管线
         GLES30.glUniformMatrix4fv(muMVPMatrixHandle, 1, false, MatrixState.getFinalMatrix(), 0);
         //将顶点位置数据传送进渲染管线
@@ -132,6 +132,21 @@ public class Triangle {
                         2 * 4,
                         mTexCoorBuffer
                 );
+        int iResolutionLocation = GLES30.glGetUniformLocation(mProgram, "iResolution");
+        GLES30.glUniform3fv(iResolutionLocation, 1,
+                FloatBuffer.wrap(new float[]{(float) width, (float) height, 1.0f}));
+
+        float time = ((float) (System.currentTimeMillis() - START_TIME)) / 1000.0f;
+        int iGlobalTimeLocation = GLES30.glGetUniformLocation(mProgram, "iGlobalTime");
+        GLES30.glUniform1f(iGlobalTimeLocation, time);
+
+        int iFrameLocation = GLES30.glGetUniformLocation(mProgram, "iFrame");
+        GLES30.glUniform1i(iFrameLocation, iFrame);
+
+        int fProgress = GLES30.glGetUniformLocation(mProgram, "fProgress");
+        GLES30.glUniform1f(fProgress, mProgress);
+
+
         //允许顶点位置数据数组
         GLES30.glEnableVertexAttribArray(maPositionHandle);//启用顶点位置数据
         GLES30.glEnableVertexAttribArray(maTexCoorHandle);//启用顶点纹理坐标数据
@@ -140,6 +155,12 @@ public class Triangle {
         GLES30.glBindTexture(GLES30.GL_TEXTURE_2D, texId);//绑定指定的纹理id
         //以三角形的方式填充
         GLES30.glDrawArrays(GLES30.GL_TRIANGLES, 0, vCount);
-    }
+        iFrame++;
 
+        if (mProgress >= 1.0f) {
+            mProgress = 0.0f;
+        } else {
+            mProgress += 0.01;
+        }
+    }
 }

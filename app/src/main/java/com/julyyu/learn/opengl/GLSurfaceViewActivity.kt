@@ -51,6 +51,7 @@ import com.julyyu.learn.opengl.samplex.samplex_11.SampleX11GLRenderer
 import com.julyyu.learn.opengl.samplex.samplex_12.SampleX12GLRenderer
 import com.julyyu.learn.opengl.samplex.samplex_13.SampleX13GLRenderer
 import com.julyyu.learn.opengl.samplex.samplex_14.SampleX14GLRenderer
+import com.julyyu.learn.opengl.samplex.samplex_15.SampleX15GLRenderer
 import com.julyyu.learn.opengl.samplex.samplex_2.SampleX2GLRenderer
 import com.julyyu.learn.opengl.samplex.samplex_3.SampleX3GLRenderer
 import com.julyyu.learn.opengl.samplex.samplex_4.SampleX4GLRenderer
@@ -244,6 +245,10 @@ class GLSurfaceViewActivity : AppCompatActivity() {
                 }
                 "SampleX14" -> {
                     glView = SampleX14GLRenderer(this@GLSurfaceViewActivity)
+                }
+                "SampleX15" -> {
+                    // 图片转场动画
+                    glView = SampleX15GLRenderer(this@GLSurfaceViewActivity)
                 }
             }
         }

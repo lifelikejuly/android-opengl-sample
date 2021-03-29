@@ -4,18 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<!--    <androidx.camera.view.PreviewView-->
-<!--        android:id="@+id/view_finder"-->
-<!--        android:contentDescription="preview_area"-->
-<!--        android:importantForAccessibility="no"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent" />-->
-
-    <TextureView
+    <androidx.camera.view.PreviewView
         android:id="@+id/view_finder"
+        android:contentDescription="preview_area"
+        android:importantForAccessibility="no"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        android:layout_height="match_parent" />
+
+
 <!--    <com.julyyu.learn.opengl.camera.camerax.GLCameraSurfaceView-->
 <!--        android:id="@+id/view_finder"-->
 <!--        android:layout_width="match_parent"-->

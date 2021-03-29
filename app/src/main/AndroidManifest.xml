@@ -30,9 +30,11 @@
         <activity
             android:name=".GLSurfaceViewActivity"
             android:screenOrientation="landscape" />
-        <activity
-            android:name=".camera.camerax.CameraXActivity"
-            />
+<!--        <activity-->
+<!--            android:name=".camera.camerax.CameraXActivity"-->
+<!--            />-->
+        <activity android:name=".camera.demo.CameraDemoActivity"/>
+        <activity android:name=".camera.camerax.GLCameraXActivity"/>
     </application>
 
 
