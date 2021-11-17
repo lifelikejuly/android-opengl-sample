@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import com.julyyu.learn.opengl.camera.camerax.GLCameraXActivity
 import com.julyyu.learn.opengl.camera.demo.CameraDemoActivity
+import com.julyyu.learn.opengl.demo.GLDemoActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -113,7 +114,9 @@ class MainActivity : AppCompatActivity() {
             "LoadObj3",
             "LoadObj4",
             "LoadObj5",
-            "LoadObj6"
+            "LoadObj6",
+            "LoadGameBoyObj",
+            "LoadSciFiBoxObj"
         )
         it["学习例子"] = arrayOf(
             "SampleX1",
@@ -135,6 +138,9 @@ class MainActivity : AppCompatActivity() {
         it["相机渲染"] = arrayOf(
             "GLCameraX",
             "Camerax"
+        )
+        it["OpenGL Demo 例子"] = arrayOf(
+            "纹理映射贴图"
         )
     }
 
@@ -164,6 +170,12 @@ class MainActivity : AppCompatActivity() {
                     if (sample == "相机渲染") {
                         Intent(this, GLCameraXActivity::class.java).run {
                             putExtra("gl", datas[position])
+                            startActivity(this)
+                        }
+                        return@setOnItemClickListener
+                    }else  if (sample == "OpenGL Demo 例子") {
+                        Intent(this, GLDemoActivity::class.java).run {
+                            putExtra("demo", demo[sample]!![position])
                             startActivity(this)
                         }
                         return@setOnItemClickListener

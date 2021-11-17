@@ -45,6 +45,7 @@ import com.julyyu.learn.opengl.sample9.sample9_3.LoadObj3Renderer
 import com.julyyu.learn.opengl.sample9.sample9_4.LoadObj4Renderer
 import com.julyyu.learn.opengl.sample9.sample9_5.LoadObj5Renderer
 import com.julyyu.learn.opengl.sample9.sample9_6.LoadObj6Renderer
+import com.julyyu.learn.opengl.sample9.sample9_7.LoadObjColorRenderer
 import com.julyyu.learn.opengl.samplex.samplex_1.SampleX1GLRenderer
 import com.julyyu.learn.opengl.samplex.samplex_10.SampleX10GLRenderer
 import com.julyyu.learn.opengl.samplex.samplex_11.SampleX11GLRenderer
@@ -203,6 +204,12 @@ class GLSurfaceViewActivity : AppCompatActivity() {
                 }
                 "LoadObj6" ->{
                     glView = LoadObj6Renderer(this@GLSurfaceViewActivity)
+                }
+                "LoadGameBoyObj" ->{
+                    glView = LoadObjColorRenderer(this@GLSurfaceViewActivity,"GameBoy_Free.obj")
+                }
+                "LoadSciFiBoxObj" ->{
+                    glView = LoadObjColorRenderer(this@GLSurfaceViewActivity,"SciFiBox.obj")
                 }
                 "SampleX1" -> {
                     glView = SampleX1GLRenderer(this@GLSurfaceViewActivity)

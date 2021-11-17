@@ -14,6 +14,24 @@ import java.io.InputStream;
 public class ShaderUtil {
 
 
+    public static String vsCode = "#version 300 es\n" +
+            "layout (location = 0) in vec4 vPosition;\n" +
+            "layout (location = 1) in vec2 aTextureCoord;\n" +
+            "uniform mat4 u_Matrix;\n" +
+            "out vec2 vTexCoord;\n" +
+            "void main() {\n" +
+            "    gl_Position  = u_Matrix*vPosition;\n" +
+            "    vTexCoord = aTextureCoord;\n" +
+            "}\n";
+    public static String fsCode = "#version 300 es\n" +
+            "precision mediump float;\n" +
+            "uniform sampler2D uTextureUnit;\n" +
+            "in vec2 vTexCoord;\n" +
+            "out vec4 vFragColor;\n" +
+            "void main() {\n" +
+            "    vFragColor = texture(uTextureUnit,vTexCoord);\n" +
+            "}\n";
+
     //加载制定shader的方法
     public static int loadShader
     (

@@ -35,6 +35,7 @@
 <!--            />-->
         <activity android:name=".camera.demo.CameraDemoActivity"/>
         <activity android:name=".camera.camerax.GLCameraXActivity"/>
+        <activity android:name=".demo.GLDemoActivity"/>
     </application>
 
 

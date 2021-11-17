@@ -104,6 +104,18 @@ public class SampleX15GLRenderer extends GLSurfaceView {
                 e.printStackTrace();
             }
         }
+
+        InputStream is2 = this.getResources().openRawResource(R.raw.tex11);
+        Bitmap bitmapTmp2;
+        try {
+            bitmapTmp2 = BitmapFactory.decodeStream(is2);
+        } finally {
+            try {
+                is2.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         //通过输入流加载图片===============end=====================
 
         //实际加载纹理进显存
@@ -114,7 +126,15 @@ public class SampleX15GLRenderer extends GLSurfaceView {
                         bitmapTmp,              //纹理图像
                         0                      //纹理边框尺寸
                 );
+//        GLUtils.texImage2D
+//                (
+//                        GLES30.TEXTURE_, //纹理类型
+//                        0,                      //纹理的层次，0表示基本图像层，可以理解为直接贴图
+//                        bitmapTmp2,              //纹理图像
+//                        0                      //纹理边框尺寸
+//                );
         bitmapTmp.recycle();          //纹理加载成功后释放内存中的纹理图
+        bitmapTmp2.recycle();
     }
 
 }
