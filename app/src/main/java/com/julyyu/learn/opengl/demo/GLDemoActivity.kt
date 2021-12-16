@@ -4,6 +4,7 @@ import android.opengl.GLSurfaceView
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.julyyu.learn.opengl.demo.texturemap.TextureMapGLView
+import com.julyyu.learn.opengl.demo.texurecut.TextureCutGLView
 
 /**
  * @author julyyu
@@ -29,6 +30,9 @@ class GLDemoActivity : AppCompatActivity() {
             when (this) {
                 "纹理映射贴图" -> {
                     glView = TextureMapGLView(this@GLDemoActivity)
+                }
+                "纹理映射贴图裁切特效" -> {
+                    glView = TextureCutGLView(this@GLDemoActivity)
                 }
             }
             setContentView(glView)

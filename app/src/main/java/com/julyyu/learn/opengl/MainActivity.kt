@@ -140,7 +140,8 @@ class MainActivity : AppCompatActivity() {
             "Camerax"
         )
         it["OpenGL Demo 例子"] = arrayOf(
-            "纹理映射贴图"
+            "纹理映射贴图",
+            "纹理映射贴图裁切特效"
         )
     }
 
