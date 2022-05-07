@@ -137,7 +137,7 @@ public class TextureCutGLView extends GLSurfaceView {
             //设置屏幕背景色RGBA
             GLES30.glClearColor(0f, 0f, 0.5f, 1.0f);
 
-            mProgram = ShaderUtil.createProgram(ShaderUtil.vsCode, GLESShellUtils.fsTextureMore2);
+            mProgram = ShaderUtil.createProgram(ShaderUtil.vsCode, GLESShellUtils.fsTextureAddHeart);
             //在OpenGLES环境中使用程序
             GLES30.glUseProgram(mProgram);
             //获取属性位置
