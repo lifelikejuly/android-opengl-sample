@@ -160,27 +160,27 @@ public class TextureMapGLView extends GLSurfaceView {
             float sWidthHeight=width/(float)height; // 画布宽高比
 
             // 单纯画布尺寸调整
-            float aspectRatio = width > height ? (float) width / (float) height : (float) height / (float) width;
-            if (width > height) {
-                Matrix.orthoM(mProjectMatrix, 0, -aspectRatio, aspectRatio, -1f, 1f, 0f, 10f);
-            } else {
-                Matrix.orthoM(mProjectMatrix, 0, -1f, 1f, -aspectRatio, aspectRatio, 0f, 10f);
-            }
+//            float aspectRatio = width > height ? (float) width / (float) height : (float) height / (float) width;
+//            if (width > height) {
+//                Matrix.orthoM(mProjectMatrix, 0, -aspectRatio, aspectRatio, -1f, 1f, 0f, 10f);
+//            } else {
+//                Matrix.orthoM(mProjectMatrix, 0, -1f, 1f, -aspectRatio, aspectRatio, 0f, 10f);
+//            }
 
             // 画布尺寸+图片尺寸调整
-//            if(width>height){ // 画布宽大于高
-//                if(sWH>sWidthHeight){ // 图片宽高比大于画布宽高比
-//                    Matrix.orthoM(mProjectMatrix, 0, -sWidthHeight*sWH,sWidthHeight*sWH, -1,1, 0, 10);
-//                }else{
-//                    Matrix.orthoM(mProjectMatrix, 0, -sWidthHeight/sWH,sWidthHeight/sWH, -1,1, 0, 10);
-//                }
-//            }else{
-//                if(sWH>sWidthHeight){ // 图片宽高比小于画布宽高比
-//                    Matrix.orthoM(mProjectMatrix, 0, -1, 1, -1/sWidthHeight*sWH, 1/sWidthHeight*sWH,0f, 10f);
-//                }else{
-//                    Matrix.orthoM(mProjectMatrix, 0, -1, 1, -sWH/sWidthHeight, sWH/sWidthHeight,0f, 10f);
-//                }
-//            }
+            if(width>height){ // 画布宽大于高
+                if(sWH>sWidthHeight){ // 图片宽高比大于画布宽高比
+                    Matrix.orthoM(mProjectMatrix, 0, -sWidthHeight*sWH,sWidthHeight*sWH, -1,1, 0, 10);
+                }else{
+                    Matrix.orthoM(mProjectMatrix, 0, -sWidthHeight/sWH,sWidthHeight/sWH, -1,1, 0, 10);
+                }
+            }else{
+                if(sWH>sWidthHeight){ // 图片宽高比小于画布宽高比
+                    Matrix.orthoM(mProjectMatrix, 0, -1, 1, -1/sWidthHeight*sWH, 1/sWidthHeight*sWH,0f, 10f);
+                }else{
+                    Matrix.orthoM(mProjectMatrix, 0, -1, 1, -sWH/sWidthHeight, sWH/sWidthHeight,0f, 10f);
+                }
+            }
 
 //            Matrix.orthoM(mProjectMatrix, 0, -1,1, -1,1, -1, 1);
 

@@ -95,7 +95,7 @@ public class GLESShellUtils {
             "     vec4 newColor2 = texture(uTextureUnit, pos2);\n" +
             "     vFragColor = mix(newColor1,newColor2,0.5);\n" +
             "}\n";
-
+    /// 增加爱心
     public static final String fsTextureAddHeart = "#version 300 es\n" +
             "precision highp float;\n" +
             "uniform sampler2D uTextureUnit;\n" +
