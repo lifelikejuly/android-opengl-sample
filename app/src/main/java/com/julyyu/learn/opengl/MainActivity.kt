@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import com.julyyu.learn.opengl.camera.camerax.GLCameraXActivity
 import com.julyyu.learn.opengl.camera.demo.CameraDemoActivity
+import com.julyyu.learn.opengl.camera.water.ContinuousRecordActivity
 import com.julyyu.learn.opengl.demo.GLDemoActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -137,10 +138,14 @@ class MainActivity : AppCompatActivity() {
         )
         it["相机渲染"] = arrayOf(
             "GLCameraX",
-            "Camerax"
+            "Camerax",
+            "WaterCamera"
         )
         it["OpenGL Demo 例子"] = arrayOf(
             "纹理映射贴图",
+            "纹理映射贴图2",
+            "纹理映射贴图3",
+            "纹理映射贴图4带灰色滤镜",
             "纹理映射贴图裁切特效"
         )
     }
@@ -169,6 +174,12 @@ class MainActivity : AppCompatActivity() {
                     }
                 }else{
                     if (sample == "相机渲染") {
+                        if(demo[sample]!![position]  == "WaterCamera"){
+                            Intent(this, ContinuousRecordActivity::class.java).run {
+                                startActivity(this)
+                            }
+                            return@setOnItemClickListener
+                        }
                         Intent(this, GLCameraXActivity::class.java).run {
                             putExtra("gl", datas[position])
                             startActivity(this)

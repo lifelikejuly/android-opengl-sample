@@ -12,6 +12,7 @@
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -36,6 +37,7 @@
         <activity android:name=".camera.demo.CameraDemoActivity"/>
         <activity android:name=".camera.camerax.GLCameraXActivity"/>
         <activity android:name=".demo.GLDemoActivity"/>
+        <activity android:name=".camera.water.ContinuousRecordActivity"/>
     </application>
 
 

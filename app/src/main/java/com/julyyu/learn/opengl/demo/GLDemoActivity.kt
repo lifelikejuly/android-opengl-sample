@@ -4,6 +4,9 @@ import android.opengl.GLSurfaceView
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.julyyu.learn.opengl.demo.texturemap.TextureMapGLView
+import com.julyyu.learn.opengl.demo.texturemap.TextureMapGLView2
+import com.julyyu.learn.opengl.demo.texturemap.TextureMapGLView3
+import com.julyyu.learn.opengl.demo.texturemap.TextureMapGLView4
 import com.julyyu.learn.opengl.demo.texurecut.TextureCutGLView
 
 /**
@@ -30,6 +33,15 @@ class GLDemoActivity : AppCompatActivity() {
             when (this) {
                 "纹理映射贴图" -> {
                     glView = TextureMapGLView(this@GLDemoActivity)
+                }
+                "纹理映射贴图2" -> {
+                    glView = TextureMapGLView2(this@GLDemoActivity)
+                }
+                "纹理映射贴图3" -> {
+                    glView = TextureMapGLView3(this@GLDemoActivity)
+                }
+                "纹理映射贴图4带灰色滤镜" -> {
+                    glView = TextureMapGLView4(this@GLDemoActivity)
                 }
                 "纹理映射贴图裁切特效" -> {
                     glView = TextureCutGLView(this@GLDemoActivity)

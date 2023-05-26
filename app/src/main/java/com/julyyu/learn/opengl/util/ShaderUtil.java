@@ -1,10 +1,17 @@
 package com.julyyu.learn.opengl.util;
 
+import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.opengl.GLES30;
+import android.opengl.GLUtils;
 import android.util.Log;
 
+import com.julyyu.learn.opengl.R;
+
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 
 /**
