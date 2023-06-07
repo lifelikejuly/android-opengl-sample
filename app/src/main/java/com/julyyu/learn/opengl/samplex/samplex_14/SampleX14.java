@@ -91,9 +91,9 @@ public class SampleX14 {
     //初始化着色器
     public void initShader(GLSurfaceView mv) {
         //加载顶点着色器的脚本内容
-        mVertexShader = ShaderUtil.loadFromAssetsFile("samplex14/vertex_samplex14.vsh", mv.getResources());
+        mVertexShader = ShaderUtil.loadFromAssetsFile("samplexs/samplex14/vertex_samplex14.vsh", mv.getResources());
         //加载片元着色器的脚本内容
-        mFragmentShader = ShaderUtil.loadFromAssetsFile("samplex14/frag_samplex14.fsh", mv.getResources());
+        mFragmentShader = ShaderUtil.loadFromAssetsFile("samplexs/samplex14/frag_samplex14.fsh", mv.getResources());
         //基于顶点着色器与片元着色器创建程序
         mProgram = ShaderUtil.createProgram(mVertexShader, mFragmentShader);
         //获取程序中顶点位置属性引用

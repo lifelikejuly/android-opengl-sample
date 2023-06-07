@@ -28,6 +28,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".book.OpenGLES3XActivity"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".GLSurfaceViewActivity"
             android:screenOrientation="landscape" />

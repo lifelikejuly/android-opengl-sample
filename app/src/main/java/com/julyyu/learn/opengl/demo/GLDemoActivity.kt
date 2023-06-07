@@ -7,10 +7,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
-import com.julyyu.learn.opengl.demo.texturemap.TextureMapGLView
-import com.julyyu.learn.opengl.demo.texturemap.TextureMapGLView2
-import com.julyyu.learn.opengl.demo.texturemap.TextureMapGLView3
-import com.julyyu.learn.opengl.demo.texturemap.TextureMapGLView4
+import com.julyyu.learn.opengl.demo.texturemap.*
 import com.julyyu.learn.opengl.demo.texurecut.TextureCutGLView
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
@@ -32,29 +29,25 @@ import java.nio.ByteOrder
 
 class GLDemoActivity : AppCompatActivity() {
 
+
+    companion object {
+        val glDemos = mapOf(
+            "纹理映射贴图" to TextureMapGLView::class.java,
+            "纹理映射贴图+双纹理合并" to TextureMapGLMoreTextureView::class.java,
+            "纹理映射贴图+矩阵变化" to TextureMapGLMatrixView::class.java,
+            "纹理映射贴图+带灰色滤镜" to TextureMapGLColorEffectView::class.java,
+            "纹理映射贴图+混合模式" to TextureMapGLMixModeView::class.java,
+            "纹理映射贴图+裁切特效" to TextureCutGLView::class.java
+        )
+    }
+
+
     var glView: GLSurfaceView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         intent.getStringExtra("demo").run {
-            when (this) {
-                "纹理映射贴图" -> {
-                    glView = TextureMapGLView(this@GLDemoActivity)
-                }
-                "纹理映射贴图2" -> {
-                    glView = TextureMapGLView2(this@GLDemoActivity)
-                }
-                "纹理映射贴图3" -> {
-                    glView = TextureMapGLView3(this@GLDemoActivity)
-                }
-                "纹理映射贴图4带灰色滤镜" -> {
-                    glView = TextureMapGLView4(this@GLDemoActivity)
-                }
-                "纹理映射贴图裁切特效" -> {
-                    glView = TextureCutGLView(this@GLDemoActivity)
-                }
-            }
-
+            glView = glDemos[this]?.constructors!![0].newInstance(this@GLDemoActivity) as GLSurfaceView?
             setContentView(RelativeLayout(this@GLDemoActivity).apply {
                 addView(glView)
                 addView(Button(this@GLDemoActivity).apply {

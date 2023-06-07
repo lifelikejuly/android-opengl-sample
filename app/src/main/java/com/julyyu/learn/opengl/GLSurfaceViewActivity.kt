@@ -3,49 +3,49 @@ package com.julyyu.learn.opengl
 import android.opengl.GLSurfaceView
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.julyyu.learn.opengl.sample3.sample3_1.TriangleGLRenderer
-import com.julyyu.learn.opengl.sample5.sample5_1.SixStartGLRenderer
-import com.julyyu.learn.opengl.sample5.sample5_10.CircleGLDrawRangeElementsRenderer
-import com.julyyu.learn.opengl.sample5.sample5_11.LayoutRenderer
-import com.julyyu.learn.opengl.sample5.sample5_12.VertexAttribRenderer
-import com.julyyu.learn.opengl.sample5.sample5_13.PerspectiveGLRenderer
-import com.julyyu.learn.opengl.sample5.sample5_14.FrustumMRenderer
-import com.julyyu.learn.opengl.sample5.sample5_15.OffsetRenderer
-import com.julyyu.learn.opengl.sample5.sample5_16.ClipRenderer
-import com.julyyu.learn.opengl.sample5.sample5_3.CubeGLRenderer
-import com.julyyu.learn.opengl.sample5.sample5_4.CubeGLRenderer2
-import com.julyyu.learn.opengl.sample5.sample5_5.CubeGLRenderer3
-import com.julyyu.learn.opengl.sample5.sample5_6.PointLinerGLRenderer
-import com.julyyu.learn.opengl.sample5.sample5_7.BeltCircleGLRenderer
-import com.julyyu.learn.opengl.sample5.sample5_8.BeltGLRenderer
-import com.julyyu.learn.opengl.sample5.sample5_9.BeltCircleGLDrawElementsRenderer
-import com.julyyu.learn.opengl.sample6.sample6_1.BallRenderer
-import com.julyyu.learn.opengl.sample6.sample6_2.AmbientRenderer
-import com.julyyu.learn.opengl.sample6.sample6_3.DiffuseRenderer
-import com.julyyu.learn.opengl.sample7.sample7_1.TextureMapRenderer
-import com.julyyu.learn.opengl.sample7.sample7_10.TextureMapSampleConfigRenderer
-import com.julyyu.learn.opengl.sample7.sample7_2.TextureMapGreenRenderer
-import com.julyyu.learn.opengl.sample7.sample7_3.TextureMapStretchRenderer
-import com.julyyu.learn.opengl.sample7.sample7_4.TextureMapSampleRenderer
-import com.julyyu.learn.opengl.sample7.sample7_5.TextureMapMoreRenderer
-import com.julyyu.learn.opengl.sample7.sample7_6.TextureMapCompressionGenderer
-import com.julyyu.learn.opengl.sample7.sample7_7.TextureMapPointSpriteRenderer
-import com.julyyu.learn.opengl.sample7.sample7_8.TextureMap3DRenderer
-import com.julyyu.learn.opengl.sample7.sample7_9.TextureMap2DRenderer
-import com.julyyu.learn.opengl.sample8.sample8_1.CylinderRenderer
-import com.julyyu.learn.opengl.sample8.sample8_2.ConeSideRenderer
-import com.julyyu.learn.opengl.sample8.sample8_3.TorusRenderer
-import com.julyyu.learn.opengl.sample8.sample8_4.SpringRenderer
-import com.julyyu.learn.opengl.sample8.sample8_5.SphereRenderer
-import com.julyyu.learn.opengl.sample8.sample8_6.FootballCarbonRenderer
-import com.julyyu.learn.opengl.sample8.sample8_7.BuildingRenderer
-import com.julyyu.learn.opengl.sample9.sample9_1.LoadObjRenderer
-import com.julyyu.learn.opengl.sample9.sample9_2.LoadObj2Renderer
-import com.julyyu.learn.opengl.sample9.sample9_3.LoadObj3Renderer
-import com.julyyu.learn.opengl.sample9.sample9_4.LoadObj4Renderer
-import com.julyyu.learn.opengl.sample9.sample9_5.LoadObj5Renderer
-import com.julyyu.learn.opengl.sample9.sample9_6.LoadObj6Renderer
-import com.julyyu.learn.opengl.sample9.sample9_7.LoadObjColorRenderer
+import com.julyyu.learn.opengl.book.sample3.sample3_1.TriangleGLRenderer
+import com.julyyu.learn.opengl.book.sample5.sample5_1.SixStartGLRenderer
+import com.julyyu.learn.opengl.book.sample5.sample5_10.CircleGLDrawRangeElementsRenderer
+import com.julyyu.learn.opengl.book.sample5.sample5_11.LayoutRenderer
+import com.julyyu.learn.opengl.book.sample5.sample5_12.VertexAttribRenderer
+import com.julyyu.learn.opengl.book.sample5.sample5_13.PerspectiveGLRenderer
+import com.julyyu.learn.opengl.book.sample5.sample5_14.FrustumMRenderer
+import com.julyyu.learn.opengl.book.sample5.sample5_15.OffsetRenderer
+import com.julyyu.learn.opengl.book.sample5.sample5_16.ClipRenderer
+import com.julyyu.learn.opengl.book.sample5.sample5_3.CubeGLRenderer
+import com.julyyu.learn.opengl.book.sample5.sample5_4.CubeGLRenderer2
+import com.julyyu.learn.opengl.book.sample5.sample5_5.CubeGLRenderer3
+import com.julyyu.learn.opengl.book.sample5.sample5_6.PointLinerGLRenderer
+import com.julyyu.learn.opengl.book.sample5.sample5_7.BeltCircleGLRenderer
+import com.julyyu.learn.opengl.book.sample5.sample5_8.BeltGLRenderer
+import com.julyyu.learn.opengl.book.sample5.sample5_9.BeltCircleGLDrawElementsRenderer
+import com.julyyu.learn.opengl.book.sample6.sample6_1.BallRenderer
+import com.julyyu.learn.opengl.book.sample6.sample6_2.AmbientRenderer
+import com.julyyu.learn.opengl.book.sample6.sample6_3.DiffuseRenderer
+import com.julyyu.learn.opengl.book.sample7.sample7_1.TextureMapRenderer
+import com.julyyu.learn.opengl.book.sample7.sample7_10.TextureMapSampleConfigRenderer
+import com.julyyu.learn.opengl.book.sample7.sample7_2.TextureMapGreenRenderer
+import com.julyyu.learn.opengl.book.sample7.sample7_3.TextureMapStretchRenderer
+import com.julyyu.learn.opengl.book.sample7.sample7_4.TextureMapSampleRenderer
+import com.julyyu.learn.opengl.book.sample7.sample7_5.TextureMapMoreRenderer
+import com.julyyu.learn.opengl.book.sample7.sample7_6.TextureMapCompressionGenderer
+import com.julyyu.learn.opengl.book.sample7.sample7_7.TextureMapPointSpriteRenderer
+import com.julyyu.learn.opengl.book.sample7.sample7_8.TextureMap3DRenderer
+import com.julyyu.learn.opengl.book.sample7.sample7_9.TextureMap2DRenderer
+import com.julyyu.learn.opengl.book.sample8.sample8_1.CylinderRenderer
+import com.julyyu.learn.opengl.book.sample8.sample8_2.ConeSideRenderer
+import com.julyyu.learn.opengl.book.sample8.sample8_3.TorusRenderer
+import com.julyyu.learn.opengl.book.sample8.sample8_4.SpringRenderer
+import com.julyyu.learn.opengl.book.sample8.sample8_5.SphereRenderer
+import com.julyyu.learn.opengl.book.sample8.sample8_6.FootballCarbonRenderer
+import com.julyyu.learn.opengl.book.sample8.sample8_7.BuildingRenderer
+import com.julyyu.learn.opengl.book.sample9.sample9_1.LoadObjRenderer
+import com.julyyu.learn.opengl.book.sample9.sample9_2.LoadObj2Renderer
+import com.julyyu.learn.opengl.book.sample9.sample9_3.LoadObj3Renderer
+import com.julyyu.learn.opengl.book.sample9.sample9_4.LoadObj4Renderer
+import com.julyyu.learn.opengl.book.sample9.sample9_5.LoadObj5Renderer
+import com.julyyu.learn.opengl.book.sample9.sample9_6.LoadObj6Renderer
+import com.julyyu.learn.opengl.book.sample9.sample9_7.LoadObjColorRenderer
 import com.julyyu.learn.opengl.samplex.samplex_1.SampleX1GLRenderer
 import com.julyyu.learn.opengl.samplex.samplex_10.SampleX10GLRenderer
 import com.julyyu.learn.opengl.samplex.samplex_11.SampleX11GLRenderer
@@ -76,140 +76,278 @@ class GLSurfaceViewActivity : AppCompatActivity() {
         intent.getStringExtra("gl").run {
             when (this) {
                 "Triangle" -> {
-                    glView = TriangleGLRenderer(this@GLSurfaceViewActivity)
+                    glView =
+                        TriangleGLRenderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "SixStar" -> {
-                    glView = SixStartGLRenderer(this@GLSurfaceViewActivity)
+                    glView =
+                        SixStartGLRenderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "SixStar2" -> {
-                    glView = SixStartGLRenderer(this@GLSurfaceViewActivity, false)
+                    glView =
+                        SixStartGLRenderer(
+                            this@GLSurfaceViewActivity,
+                            false
+                        )
                 }
                 "Cube" -> {
-                    glView = CubeGLRenderer(this@GLSurfaceViewActivity)
+                    glView =
+                        CubeGLRenderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "Cube2" -> {
-                    glView = CubeGLRenderer2(this@GLSurfaceViewActivity)
+                    glView =
+                        CubeGLRenderer2(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "Cube3" -> {
-                    glView = CubeGLRenderer3(this@GLSurfaceViewActivity)
+                    glView =
+                        CubeGLRenderer3(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "PointOrLine" -> {
 //                    requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-                    glView = PointLinerGLRenderer(this@GLSurfaceViewActivity)
+                    glView =
+                        PointLinerGLRenderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "BeltCircle" -> {
-                    glView = BeltCircleGLRenderer(this@GLSurfaceViewActivity)
+                    glView =
+                        BeltCircleGLRenderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "Belt" -> {
-                    glView = BeltGLRenderer(this@GLSurfaceViewActivity)
+                    glView =
+                        BeltGLRenderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "BeltCircleGLDrawElements" -> {
-                    glView = BeltCircleGLDrawElementsRenderer(this@GLSurfaceViewActivity)
+                    glView =
+                        BeltCircleGLDrawElementsRenderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "CircleGLDrawRangeElementsRenderer" -> {
-                    glView = CircleGLDrawRangeElementsRenderer(this@GLSurfaceViewActivity)
+                    glView =
+                        CircleGLDrawRangeElementsRenderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "LayoutRenderer" -> {
-                    glView = LayoutRenderer(this@GLSurfaceViewActivity)
+                    glView =
+                        LayoutRenderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "VertexAttrib" -> {
-                    glView = VertexAttribRenderer(this@GLSurfaceViewActivity)
+                    glView =
+                        VertexAttribRenderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "Perspective" -> {
-                    glView = PerspectiveGLRenderer(this@GLSurfaceViewActivity)
+                    glView =
+                        PerspectiveGLRenderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "FrustumM" -> {
-                    glView = FrustumMRenderer(this@GLSurfaceViewActivity)
+                    glView =
+                        FrustumMRenderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "Offset" -> {
-                    glView = OffsetRenderer(this@GLSurfaceViewActivity)
+                    glView =
+                        OffsetRenderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "Clip" -> {
-                    glView = ClipRenderer(this@GLSurfaceViewActivity)
+                    glView =
+                        ClipRenderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "Ball" -> {
-                    glView = BallRenderer(this@GLSurfaceViewActivity)
+                    glView =
+                        BallRenderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "Ambient" -> {
-                    glView = AmbientRenderer(this@GLSurfaceViewActivity)
+                    glView =
+                        AmbientRenderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "Diffuse" -> {
-                    glView = DiffuseRenderer(this@GLSurfaceViewActivity)
+                    glView =
+                        DiffuseRenderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "TextureMap" -> {
-                    glView = TextureMapRenderer(this@GLSurfaceViewActivity)
+                    glView =
+                        TextureMapRenderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "TextureMapGreen" -> {
-                    glView = TextureMapGreenRenderer(this@GLSurfaceViewActivity)
+                    glView =
+                        TextureMapGreenRenderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "TextureMapStretch" -> {
-                    glView = TextureMapStretchRenderer(this@GLSurfaceViewActivity)
+                    glView =
+                        TextureMapStretchRenderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "TextureMapSample" -> {
-                    glView = TextureMapSampleRenderer(this@GLSurfaceViewActivity)
+                    glView =
+                        TextureMapSampleRenderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "TextureMapMore" -> {
-                    glView = TextureMapMoreRenderer(this@GLSurfaceViewActivity)
+                    glView =
+                        TextureMapMoreRenderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "TextureMapCompress" -> {
-                    glView = TextureMapCompressionGenderer(this@GLSurfaceViewActivity)
+                    glView =
+                        TextureMapCompressionGenderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "TextureMapPointSprite" -> {
-                    glView = TextureMapPointSpriteRenderer(this@GLSurfaceViewActivity)
+                    glView =
+                        TextureMapPointSpriteRenderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "TextureMap3D" -> {
-                    glView = TextureMap3DRenderer(this@GLSurfaceViewActivity)
+                    glView =
+                        TextureMap3DRenderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "TextureMap2D" -> {
-                    glView = TextureMap2DRenderer(this@GLSurfaceViewActivity)
+                    glView =
+                        TextureMap2DRenderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "TextureMapSampleConfig" -> {
-                    glView = TextureMapSampleConfigRenderer(this@GLSurfaceViewActivity)
+                    glView =
+                        TextureMapSampleConfigRenderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "Cylinder" -> {
-                    glView = CylinderRenderer(this@GLSurfaceViewActivity)
+                    glView =
+                        CylinderRenderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "ConeSide" -> {
-                    glView = ConeSideRenderer(this@GLSurfaceViewActivity)
+                    glView =
+                        ConeSideRenderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "Torus" ->{
-                    glView = TorusRenderer(this@GLSurfaceViewActivity)
+                    glView =
+                        TorusRenderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "Spring" ->{
-                    glView = SpringRenderer(this@GLSurfaceViewActivity)
+                    glView =
+                        SpringRenderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "Sphere" ->{
-                    glView = SphereRenderer(this@GLSurfaceViewActivity)
+                    glView =
+                        SphereRenderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "FootballCarbon" ->{
-                    glView = FootballCarbonRenderer(this@GLSurfaceViewActivity)
+                    glView =
+                        FootballCarbonRenderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "Building" ->{
-                    glView = BuildingRenderer(this@GLSurfaceViewActivity)
+                    glView =
+                        BuildingRenderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "LoadObj" ->{
-                    glView = LoadObjRenderer(this@GLSurfaceViewActivity)
+                    glView =
+                        LoadObjRenderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "LoadObj2" ->{
-                    glView = LoadObj2Renderer(this@GLSurfaceViewActivity)
+                    glView =
+                        LoadObj2Renderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "LoadObj3" ->{
-                    glView = LoadObj3Renderer(this@GLSurfaceViewActivity)
+                    glView =
+                        LoadObj3Renderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "LoadObj4" ->{
-                    glView = LoadObj4Renderer(this@GLSurfaceViewActivity)
+                    glView =
+                        LoadObj4Renderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "LoadObj5" ->{
-                    glView = LoadObj5Renderer(this@GLSurfaceViewActivity)
+                    glView =
+                        LoadObj5Renderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "LoadObj6" ->{
-                    glView = LoadObj6Renderer(this@GLSurfaceViewActivity)
+                    glView =
+                        LoadObj6Renderer(
+                            this@GLSurfaceViewActivity
+                        )
                 }
                 "LoadGameBoyObj" ->{
-                    glView = LoadObjColorRenderer(this@GLSurfaceViewActivity,"GameBoy_Free.obj")
+                    glView =
+                        LoadObjColorRenderer(
+                            this@GLSurfaceViewActivity,
+                            "GameBoy_Free.obj"
+                        )
                 }
                 "LoadSciFiBoxObj" ->{
-                    glView = LoadObjColorRenderer(this@GLSurfaceViewActivity,"SciFiBox.obj")
+                    glView =
+                        LoadObjColorRenderer(
+                            this@GLSurfaceViewActivity,
+                            "SciFiBox.obj"
+                        )
                 }
                 "SampleX1" -> {
                     glView = SampleX1GLRenderer(this@GLSurfaceViewActivity)

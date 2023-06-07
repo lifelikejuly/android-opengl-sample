@@ -3,7 +3,6 @@ package com.julyyu.learn.opengl;
 import android.opengl.GLES30;
 import android.opengl.GLSurfaceView;
 import android.opengl.Matrix;
-import android.util.Log;
 
 import com.julyyu.learn.opengl.util.ShaderUtil;
 
@@ -98,11 +97,11 @@ public abstract class BaseDrawSample {
     public abstract void initVertexData();
 
     public String getVertexFile() {
-        return "vertex.vsh";
+        return "book/sample5/vertex.vsh";
     }
 
     public String getFragFile() {
-        return "frag.fsh";
+        return "book/sample5/frag.fsh";
     }
 
 }

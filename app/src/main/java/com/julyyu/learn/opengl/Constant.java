@@ -6,6 +6,10 @@ package com.julyyu.learn.opengl;
  */
 public class Constant {
 
+    public static int SCREEN_WIDTH = 800;
+    public static int SCREEN_HEIGHT = 480;
+
+
     //单位尺寸
     public static float UNIT_SIZE = 1f;
     //计算GLSurfaceView的宽高比
