@@ -18,6 +18,7 @@ import com.julyyu.learn.opengl.util.ShaderUtil;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.FloatBuffer;
+import java.nio.IntBuffer;
 import java.nio.ShortBuffer;
 
 import javax.microedition.khronos.egl.EGLConfig;
@@ -242,8 +243,18 @@ public class TextureMapGLMoreTextureView extends GLSurfaceView {
             GLES30.glBindTexture(GLES30.GL_TEXTURE_2D, textureId2);
 
 
+
+
             // 绘制
             GLES30.glDrawElements(GLES20.GL_TRIANGLES, VERTEX_INDEX.length, GLES20.GL_UNSIGNED_SHORT, mVertexIndexBuffer);
+
+
+            IntBuffer bak_tex = IntBuffer.allocate(1),bak_tex2 = IntBuffer.allocate(1);
+            GLES30.glActiveTexture(GLES30.GL_TEXTURE0);
+            GLES30.glGetIntegerv(GLES30.GL_TEXTURE_BINDING_2D, bak_tex);
+            GLES30.glActiveTexture(GLES30.GL_TEXTURE1);
+            GLES30.glGetIntegerv(GLES30.GL_TEXTURE_BINDING_2D, bak_tex2);
+            Log.v("<><>","bak_tex " + bak_tex.get() + " bak_tex2 " + bak_tex2.get() +" textureId1 " + textureId1 + " textureId2 " + textureId2);
 
             //禁止顶点数组的句柄
             GLES30.glDisableVertexAttribArray(aPositionLocation);

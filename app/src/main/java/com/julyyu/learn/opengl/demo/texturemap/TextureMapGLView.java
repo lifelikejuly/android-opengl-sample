@@ -34,7 +34,6 @@ public class TextureMapGLView extends GLSurfaceView {
 
     SceneRenderer mRenderer;
 
-
     public TextureMapGLView(Context context) {
         super(context);
         this.setEGLContextClientVersion(3);    //设置使用OPENGL ES3.0
@@ -42,6 +41,4 @@ public class TextureMapGLView extends GLSurfaceView {
         setRenderer(mRenderer);                //设置渲染器
         setRenderMode(GLSurfaceView.RENDERMODE_CONTINUOUSLY);//设置渲染模式为主动渲染
     }
-
-
 }

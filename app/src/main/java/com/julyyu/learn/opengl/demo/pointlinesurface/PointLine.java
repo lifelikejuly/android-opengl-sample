@@ -1,4 +1,4 @@
-package com.julyyu.learn.opengl.samplex.samplex_1;
+package com.julyyu.learn.opengl.demo.pointlinesurface;
 
 import android.opengl.GLES30;
 import android.opengl.GLSurfaceView;
@@ -13,7 +13,7 @@ import java.nio.FloatBuffer;
  * @CreateDate: 2020-02-19
  */
 /// 线段
-public class SampleX1 {
+public class PointLine {
 
     int mProgram;//自定义渲染管线程序id
     int maPositionHandle; //顶点位置属性引用
@@ -23,7 +23,7 @@ public class SampleX1 {
     FloatBuffer mVertexBuffer;//顶点坐标数据缓冲
     FloatBuffer mColorBuffer;//顶点着色数据缓冲
 
-    public SampleX1(GLSurfaceView mv) {
+    public PointLine(GLSurfaceView mv) {
         //调用初始化顶点数据的initVertexData方法
         initVertexData();
         //调用初始化着色器的intShader方法
@@ -85,50 +85,50 @@ public class SampleX1 {
         mVertexBuffer = BufferUtil.creatFloatBuffer(vertices);
 
         float colors[] = new float[]{//顶点颜色数组
-                0, 0, 0, 0,// rgba
+                0, 0, 0, 0,//1 rgba 黑色
 
-                1, 0, 0, 0,//1
-                0, 1, 0, 0,
-                0, 0, 1, 0,
-                1, 0, 1, 0,
+                1, 0, 0, 0,// // 红
+                0, 1, 0, 0,     // 绿
+                0, 0, 1, 0,     // 蓝
+                1, 0, 1, 0,     // 紫
 
-                1, 0, 0, 0,//2
-                0, 1, 0, 0,
-                0, 0, 1, 0,
-                1, 0, 1, 0,
+                1, 0, 0, 0,//2 // 红
+                0, 1, 0, 0, // 绿
+                0, 0, 1, 0, // 蓝
+                1, 0, 1, 0, // 紫
 
-                1, 0, 0, 0,//3
-                0, 1, 0, 0,
-                0, 0, 1, 0,
-                1, 0, 1, 0,
+                1, 0, 0, 0,//3 // 红
+                0, 1, 0, 0, // 绿
+                0, 0, 1, 0, // 蓝
+                1, 0, 1, 0, // 紫
 
-                1, 0, 0, 0,//4
-                0, 1, 0, 0,
-                0, 0, 1, 0,
-                1, 0, 1, 0,
+                1, 0, 0, 0,//4// 红
+                0, 1, 0, 0, // 绿
+                0, 0, 1, 0, // 蓝
+                1, 0, 1, 0, // 紫
 
-                1, 0, 0, 0,//5
-                0, 1, 0, 0,
-                0, 0, 1, 0,
-                1, 0, 1, 0,
+                1, 0, 0, 0,//5// 红
+                0, 1, 0, 0, // 绿
+                0, 0, 1, 0, // 蓝
+                1, 0, 1, 0, // 紫
 
-                1, 0, 0, 0,//6
-                0, 1, 0, 0,
-                0, 0, 1, 0,
-                1, 0, 1, 0,
+                1, 0, 0, 0,//6// 红
+                0, 1, 0, 0, // 绿
+                0, 0, 1, 0, // 蓝
+                1, 0, 1, 0, // 紫
 
-                1, 0, 0, 0,//7
-                0, 1, 0, 0,
-                0, 0, 1, 0,
-                1, 0, 1, 0,
+                1, 0, 0, 0,//7// 红
+                0, 1, 0, 0, // 绿
+                0, 0, 1, 0, // 蓝
+                1, 0, 1, 0, // 紫
 
                 0, 0, 0, 0,//8
-                1, 0, 0, 0,
-                0, 1, 0, 0,
-                0, 0, 1, 0,
-                1, 0, 1, 0,
-                0, 1, 0, 0,
-                0, 0, 1, 0,
+                1, 0, 0, 0,// 红
+                0, 1, 0, 0, // 绿
+                0, 0, 1, 0, // 蓝
+                1, 0, 1, 0, // 紫
+                0, 1, 0, 0,// 绿
+                0, 0, 1, 0,// 蓝
         };
 
         mColorBuffer = BufferUtil.creatFloatBuffer(colors);
@@ -146,6 +146,7 @@ public class SampleX1 {
         maPositionHandle = GLES30.glGetAttribLocation(mProgram, "aPosition");
         //获取程序中顶点颜色属性引用
         maColorHandle = GLES30.glGetAttribLocation(mProgram, "aColor");
+        GLES30.glLineWidth(10);//设置线的宽度
     }
 
     //glVertexAttribPointer
@@ -157,6 +158,8 @@ public class SampleX1 {
     public void drawSelf() {
         //指定使用某套shader程序
         GLES30.glUseProgram(mProgram);
+
+
         //将顶点位置数据送入渲染管线
         GLES30.glVertexAttribPointer(
                 maPositionHandle, 3,
@@ -167,6 +170,8 @@ public class SampleX1 {
                 maColorHandle, 4,
                 GLES30.GL_FLOAT, false,
                 4 * 4, mColorBuffer);
+
+
         //启用顶点位置数据数组
         GLES30.glEnableVertexAttribArray(maPositionHandle);
         //启用顶点颜色数据数组

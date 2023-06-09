@@ -71,6 +71,8 @@ public class SceneRendererMuch1 {
      * 0.5，0.5（0）
      * <p>
      * 0，0	（2）		1，0  （1）
+     *
+     * 可操作纹理的放大缩小
      */
     private static final float[] TEX_VERTEX = {
             0.5f, 0.5f, //纹理坐标V0
@@ -79,6 +81,14 @@ public class SceneRendererMuch1 {
             0f, 1.0f,   //纹理坐标V3
             1f, 1.0f    //纹理坐标V4
     };
+
+//    private static final float[] TEX_VERTEX = {
+//            0.25f, 0.25f, //纹理坐标V0
+//            0.5f, 0f,     //纹理坐标V1
+//            0f, 0f,     //纹理坐标V2
+//            0f, 0.5f,   //纹理坐标V3
+//            0.5f, 0.5f    //纹理坐标V4
+//    };
 
     /**
      * 绘制顺序索引
@@ -125,8 +135,6 @@ public class SceneRendererMuch1 {
 
     public void onSurfaceCreated() {
         //设置屏幕背景色RGBA
-        GLES30.glClearColor(0f, 0f, 0.5f, 1.0f);
-
         mProgram = ShaderUtil.createProgram(ShaderUtil.vsCode, ShaderUtil.fsCode);
         //在OpenGLES环境中使用程序
         GLES30.glUseProgram(mProgram);

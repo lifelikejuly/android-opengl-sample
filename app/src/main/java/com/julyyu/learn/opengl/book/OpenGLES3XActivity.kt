@@ -2,11 +2,22 @@ package com.julyyu.learn.opengl.book
 
 import android.opengl.GLSurfaceView
 import android.os.Bundle
+import android.util.DisplayMetrics
 import androidx.appcompat.app.AppCompatActivity
-import com.julyyu.learn.opengl.book.sample10.MixEffectCommonRenderer
+import com.julyyu.learn.opengl.Constant
 import com.julyyu.learn.opengl.book.sample10.sample10_1.MixEffectRenderer1
 import com.julyyu.learn.opengl.book.sample10.sample10_1a.MixEffectRenderer1a
 import com.julyyu.learn.opengl.book.sample10.sample10_1b.MixEffectRenderer1b
+import com.julyyu.learn.opengl.book.sample10.sample10_2.TextureMapMoreMixRenderer
+import com.julyyu.learn.opengl.book.sample10.sample10_3.FogRenderer
+import com.julyyu.learn.opengl.book.sample10.sample10_4.FogRenderer2
+import com.julyyu.learn.opengl.book.sample11.sample11_1.SignBoardRenderer
+import com.julyyu.learn.opengl.book.sample11.sample11_2.TerrainRenderer
+import com.julyyu.learn.opengl.book.sample11.sample11_3.TerrainRenderer2
+import com.julyyu.learn.opengl.book.sample11.sample11_4.TerrainRenderer3
+import com.julyyu.learn.opengl.book.sample11.sample11_4a.TerrainRenderer4
+import com.julyyu.learn.opengl.book.sample11.sample11_5.SkyBoxRenderer
+import com.julyyu.learn.opengl.book.sample11.sample11_6.SkyDomeRenderer
 import com.julyyu.learn.opengl.book.sample3.sample3_1.TriangleGLRenderer
 import com.julyyu.learn.opengl.book.sample5.sample5_1.SixStartGLRenderer
 import com.julyyu.learn.opengl.book.sample5.sample5_10.CircleGLDrawRangeElementsRenderer
@@ -58,6 +69,7 @@ import com.julyyu.learn.opengl.book.sample9.sample9_4.LoadObj4Renderer
 import com.julyyu.learn.opengl.book.sample9.sample9_5.LoadObj5Renderer
 import com.julyyu.learn.opengl.book.sample9.sample9_6.LoadObj6Renderer
 
+
 /**
  * 书籍目录
  */
@@ -67,6 +79,18 @@ class OpenGLES3XActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //获得系统的宽度以及高度
+        //获得系统的宽度以及高度
+        val dm = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(dm)
+        if (dm.widthPixels > dm.heightPixels) {
+            Constant.WIDTH = dm.widthPixels.toFloat()
+            Constant.HEIGHT = dm.heightPixels.toFloat()
+        } else {
+            Constant.WIDTH = dm.heightPixels.toFloat()
+            Constant.HEIGHT = dm.widthPixels.toFloat()
+        }
         bookContents?.also { contents ->
             intent.getStringExtra("sample_title")?.also { sample ->
                 val sample = contents[sample]
@@ -158,10 +182,25 @@ class OpenGLES3XActivity : AppCompatActivity() {
             ),
             "sample10(混合与雾)" to mapOf(
                 "sample10_1(混合模式COLOR)" to MixEffectRenderer1::class.java,
-                "sample10_2(混合模式ALPHA)" to MixEffectRenderer1a::class.java,
-                "sample10_3(ETC2压缩纹理)" to MixEffectRenderer1b::class.java
-//                "sample10_3(光照点法向量)" to LoadObj3Renderer::class.java,
-//                "sample10_4(纹理坐标)" to LoadObj4Renderer::class.java,
+                "sample10_1a(混合模式ALPHA)" to MixEffectRenderer1a::class.java,
+                "sample10_1b(ETC2压缩纹理)" to MixEffectRenderer1b::class.java,
+                "sample10_2(纹理混合模式实战)" to TextureMapMoreMixRenderer::class.java,
+                "sample10_3(雾)" to FogRenderer::class.java,
+                "sample10_4(非线性模拟雾)" to FogRenderer2::class.java
+            ),
+            "sample11(3D开发技巧)" to mapOf(
+                "sample11_1(标志板)" to SignBoardRenderer::class.java,
+                "sample11_2(灰度地形)" to TerrainRenderer::class.java,
+                "sample11_3(过程纹理地形)" to TerrainRenderer2::class.java,
+                "sample11_4(Mipmap地形)" to TerrainRenderer3::class.java,
+                "sample11_4a(顶点着色器采样纹理地形)" to TerrainRenderer4::class.java,
+                "sample11_5(天空盒)" to SkyBoxRenderer::class.java,
+                "sample11_6(天空穹)" to SkyDomeRenderer::class.java
+//                "sample11_1a(混合模式ALPHA)" to MixEffectRenderer1a::class.java,
+//                "sample11_1b(ETC2压缩纹理)" to MixEffectRenderer1b::class.java,
+//                "sample11_2(纹理混合模式实战)" to TextureMapMoreMixRenderer::class.java,
+//                "sample11_3(雾)" to FogRenderer::class.java,
+//                "sample11_4(非线性模拟雾)" to FogRenderer2::class.java
             )
         )
     }
