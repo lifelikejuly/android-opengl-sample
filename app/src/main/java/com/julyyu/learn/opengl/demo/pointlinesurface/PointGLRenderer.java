@@ -25,7 +25,6 @@ public class PointGLRenderer extends GLSurfaceView {
         this.setRenderMode(GLSurfaceView.RENDERMODE_CONTINUOUSLY);
     }
 
-
     private class SceneRenderer implements Renderer {
 
         public void onDrawFrame(GL10 gl) {
@@ -39,7 +38,7 @@ public class PointGLRenderer extends GLSurfaceView {
         public void onSurfaceCreated(GL10 gl, EGLConfig config) {
             //设置屏幕背景色RGBA
             GLES30.glClearColor(1, 1, 1, 1.0f); // 白色
-            //创建三角形对对象
+            //创建对象
             point = new Point(PointGLRenderer.this);
         }
 
@@ -47,6 +46,5 @@ public class PointGLRenderer extends GLSurfaceView {
         public void onSurfaceChanged(GL10 gl, int width, int height) {
             GLES30.glViewport(0, 0, width, height);
         }
-
     }
 }

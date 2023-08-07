@@ -34,21 +34,27 @@ public class Point {
     {
         // 五个点坐标
         float vertices[] = new float[]{//顶点坐标数组
-//                0, 0, 0,//原点 x,y,z
-
-
                 -0.9f, 0.9f , 0, //1
                 0.9f, 0.9f  , 0,
                 -0.9f, -0.9f, 0,
                 0.9f, -0.9f , 0,
 
+                -0.5f, 0.5f , 0, //1
+                0.5f, 0.5f  , 0,
+                -0.5f, -0.5f, 0,
+                0.5f, -0.5f , 0,
+
         };
         mVertexBuffer = BufferUtil.creatFloatBuffer(vertices);
         // 五个点颜色
         float colors[] = new float[]{//顶点颜色数组
-//                0, 0, 0, 0,//1 rgba 黑色
+                1, 0, 0, 0,//   // 红
+                0, 1, 0, 0,     // 绿
+                0, 0, 1, 0,     // 蓝
+                1, 0, 1, 0,     // 紫
 
-                1, 0, 0, 0,// // 红
+
+                1, 0, 0, 0,//   // 红
                 0, 1, 0, 0,     // 绿
                 0, 0, 1, 0,     // 蓝
                 1, 0, 1, 0,     // 紫
@@ -101,6 +107,10 @@ public class Point {
         GLES30.glEnableVertexAttribArray(maColorHandle);
         // 五个点 1
         GLES30.glDrawArrays(GLES30.GL_POINTS, 0, 4);
+
+
+        // 五个点 1
+        GLES30.glDrawArrays(GLES30.GL_POINTS, 4, 4);
 
 
 //        public static final int GL_POINTS                                  = 0x0000;

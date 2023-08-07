@@ -10,13 +10,14 @@ import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.julyyu.learn.opengl.demo.matrix.AddMatrixGLRenderer
 import com.julyyu.learn.opengl.demo.matrix.MatrixSquareGLRenderer
-import com.julyyu.learn.opengl.demo.matrix.RotateMatrixSquare
-import com.julyyu.learn.opengl.demo.matrix.RotateMatrixSquareGLRenderer
+import com.julyyu.learn.opengl.demo.matrix.ChangeMatrixSquareGLRenderer
 import com.julyyu.learn.opengl.demo.pointlinesurface.PointGLRenderer
 import com.julyyu.learn.opengl.demo.texturemap.*
 import com.julyyu.learn.opengl.demo.texurecut.TextureCutGLView
 import com.julyyu.learn.opengl.demo.pointlinesurface.PointLineGLRenderer
 import com.julyyu.learn.opengl.demo.pointlinesurface.SurfaceGLRenderer
+import com.julyyu.learn.opengl.demo.projectionmode.OrthographicProjectionGLRenderer
+import com.julyyu.learn.opengl.demo.projectionmode.PerspectiveProjectionGLRenderer
 import com.julyyu.learn.opengl.samplex.samplex_2.SampleX2GLRenderer
 import com.julyyu.learn.opengl.samplex.samplex_3.SampleX3GLRenderer
 import com.julyyu.learn.opengl.samplex.samplex_4.SampleX4GLRenderer
@@ -53,7 +54,11 @@ class GLDemoActivity : AppCompatActivity() {
             "矩阵" to mapOf(
                 "增加矩阵应用" to AddMatrixGLRenderer::class.java,
                 "矩阵正方形" to MatrixSquareGLRenderer::class.java,
-                "矩阵旋转" to RotateMatrixSquareGLRenderer::class.java
+                "矩阵变化" to ChangeMatrixSquareGLRenderer::class.java
+            ),
+            "投影模式" to mapOf(
+                "正交投影" to OrthographicProjectionGLRenderer::class.java,
+                "透视投影" to PerspectiveProjectionGLRenderer::class.java
             ),
             "纹理贴图" to mapOf(
                 "纹理映射贴图" to TextureMapGLView::class.java,

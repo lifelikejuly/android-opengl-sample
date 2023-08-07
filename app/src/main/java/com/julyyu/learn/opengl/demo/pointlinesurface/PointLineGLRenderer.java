@@ -15,7 +15,7 @@ import javax.microedition.khronos.opengles.GL10;
 public class PointLineGLRenderer extends GLSurfaceView {
 
     SceneRenderer mRenderer;//自定义渲染器的引用
-    PointLine sampleX1;
+    PointLine pointLine;
 
     public PointLineGLRenderer(Context context) {
         super(context);
@@ -31,7 +31,7 @@ public class PointLineGLRenderer extends GLSurfaceView {
         public void onDrawFrame(GL10 gl) {
             //清除深度缓冲与颜色缓冲
             GLES30.glClear(GLES30.GL_DEPTH_BUFFER_BIT | GLES30.GL_COLOR_BUFFER_BIT);
-            sampleX1.drawSelf();
+            pointLine.drawSelf();
         }
 
 
@@ -40,7 +40,7 @@ public class PointLineGLRenderer extends GLSurfaceView {
             //设置屏幕背景色RGBA
             GLES30.glClearColor(1, 1, 1, 1.0f); // 白色
             //创建三角形对对象
-            sampleX1 = new PointLine(PointLineGLRenderer.this);
+            pointLine = new PointLine(PointLineGLRenderer.this);
         }
 
         @Override

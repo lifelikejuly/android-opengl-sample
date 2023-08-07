@@ -34,19 +34,53 @@ public class Surface {
     {
         // 五个点坐标
         float vertices[] = new float[]{//顶点坐标数组
-//                0, 0, 0,//原点 x,y,z
-
-
                 -0.9f, 0.9f , 0, //1
                 0.9f, 0.9f  , 0,
                 -0.9f, -0.9f, 0,
                 0.9f, -0.9f , 0,
 
+
+                -0.8f, 0.4f, 0, //2
+                -0.7f, 0.4f, 0,
+                -0.8f, 0.3f, 0,
+                -0.7f, 0.4f, 0,
+                -0.8f, 0.3f, 0,
+                -0.7f, 0.3f, 0,
+
+
+                -0.6f, 0.4f, 0,//3
+                -0.5f, 0.4f, 0,
+                -0.6f, 0.3f, 0,
+                -0.5f, 0.3f, 0,
+
+
+                -0.4f, 0.4f, 0,//4
+                -0.4f, 0.3f, 0,
+                -0.3f, 0.3f, 0,
+                -0.3f, 0.4f, 0,
+
         };
         mVertexBuffer = BufferUtil.creatFloatBuffer(vertices);
         // 五个点颜色
         float colors[] = new float[]{//顶点颜色数组
-//                0, 0, 0, 0,//1 rgba 黑色
+                1, 0, 0, 0,// // 红
+                0, 1, 0, 0,     // 绿
+                0, 0, 1, 0,     // 蓝
+                1, 0, 1, 0,     // 紫
+
+
+                1, 0, 0, 0,// // 红
+                0, 1, 0, 0,     // 绿
+                0, 0, 1, 0,     // 蓝
+                1, 0, 1, 0,     // 紫
+                1, 0, 0, 0,// // 红
+                0, 1, 0, 0,     // 绿
+
+
+                1, 0, 0, 0,// // 红
+                0, 1, 0, 0,     // 绿
+                0, 0, 1, 0,     // 蓝
+                1, 0, 1, 0,     // 紫
 
                 1, 0, 0, 0,// // 红
                 0, 1, 0, 0,     // 绿
@@ -100,7 +134,12 @@ public class Surface {
         //启用顶点颜色数据数组
         GLES30.glEnableVertexAttribArray(maColorHandle);
         // 五个点 1
-        GLES30.glDrawArrays(GLES30.GL_TRIANGLE_STRIP, 0, 4);
+
+        GLES30.glDrawArrays(GLES30.GL_TRIANGLES, 4, 6);
+
+        GLES30.glDrawArrays(GLES30.GL_TRIANGLE_STRIP, 10, 4);
+
+        GLES30.glDrawArrays(GLES30.GL_TRIANGLE_FAN, 14, 4);
 
 
 //        public static final int GL_POINTS                                  = 0x0000;

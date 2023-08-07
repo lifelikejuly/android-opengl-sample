@@ -11,11 +11,9 @@ import com.julyyu.learn.opengl.util.ShaderUtil;
 import java.nio.FloatBuffer;
 
 /**
- * @Author: yuhaocan
- * @CreateDate: 2020-02-19
  */
 /// 矩阵 + 面
-public class RotateMatrixSquare {
+public class ChangeMatrixSquare {
 
     int mProgram;//自定义渲染管线程序id
     int maPositionHandle; //顶点位置属性引用
@@ -29,7 +27,7 @@ public class RotateMatrixSquare {
 
     final float[] mMVPMatrix = new float[16];
 
-    public RotateMatrixSquare(GLSurfaceView mv) {
+    public ChangeMatrixSquare(GLSurfaceView mv) {
         //调用初始化顶点数据的initVertexData方法
         initVertexData();
         //调用初始化着色器的intShader方法
@@ -80,21 +78,48 @@ public class RotateMatrixSquare {
     // type代表类型
     // stride代表 每组数据的间隔大小 GL_FLOAT一个就是4
     // ptr代表数据源
-
+    float scale = 1.0f;
     float angle = 0;
+    float x = 0;
+    float y = 0;
 
     public void drawSelf() {
         //指定使用某套shader程序
         GLES30.glUseProgram(mProgram);
 
-        Matrix.orthoM(mMVPMatrix, 0, -1, 1, -1, 1, 0, -1f);
-        Matrix.rotateM(mMVPMatrix,0,angle,0,0,0);
-        if (size.getWidth() > size.getHeight()) {
-            Matrix.scaleM(mMVPMatrix, 0, size.getHeight() / ((float) size.getWidth()) * 0.85f, 1 * 0.85f, 0);
-        } else {
-            Matrix.scaleM(mMVPMatrix, 0, 1 * 0.85f, size.getWidth() / ((float) size.getHeight()) * 0.85f, 0);
-        }
+//        Matrix.orthoM(mMVPMatrix, 0, -1, 1, -1, 1, 0, -1f);
 
+        /**
+         * [1.0, 0.0, 0.0, 0.0,
+         *  0.0, 1.0, 0.0, 0.0,
+         *  0.0, 0.0, 1.0, 0.0,
+         *  0.0, 0.0, 0.0, 1.0]
+         */
+        Matrix.setIdentityM(mMVPMatrix, 0); // 4 * 4
+
+
+        /**
+         * [0.85, 0.0, 0.0, 0.0,
+         * 0.0, 0.4297753, 0.0, 0.0,
+         * 0.0, 0.0, 1.0, 0.0,
+         * 0.0, 0.0, 0.0, 1.0]
+         */
+        if (size.getWidth() > size.getHeight()) {
+            Matrix.scaleM(mMVPMatrix, 0, size.getHeight() / ((float) size.getWidth()) * 0.85f, 1 * 0.85f, 1);
+        } else {
+            Matrix.scaleM(mMVPMatrix, 0, 1 * 0.85f, size.getWidth() / ((float) size.getHeight()) * 0.85f, 1);
+        }
+        Matrix.scaleM(mMVPMatrix,0,scale,scale,1f);
+
+        Matrix.translateM(mMVPMatrix,0,x,y,1f);
+        Matrix.rotateM(mMVPMatrix,0,angle,0,0,1f);
+
+        /**
+         * [0.42499998, 0.37219635, 0.0, 0.0,
+         * -0.73612165, 0.21488763, 0.0, 0.0,
+         * 0.0, 0.0, 1.0, 0.0,
+         * 0.0, 0.0, 1.0, 1.0]
+         */
         GLES30.glUniformMatrix4fv(uMatrixHandle, 1, false, mMVPMatrix, 0);
 
 
@@ -136,8 +161,28 @@ public class RotateMatrixSquare {
         this.size = size;
     }
 
+    public void setScale(float scale){
+        this.scale = scale;
+    }
+
     public void rotate() {
         angle += 20;
         if(angle > 360) angle = 0;
+    }
+
+    public void left(){
+        x -= 0.05;
+    }
+
+    public void right(){
+        x += 0.05;
+    }
+
+    public void top(){
+        y += 0.05;
+    }
+
+    public void bottom(){
+        y -= 0.05;
     }
 }

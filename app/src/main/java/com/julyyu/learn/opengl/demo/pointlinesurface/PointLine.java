@@ -33,13 +33,6 @@ public class PointLine {
     public void initVertexData()//初始化顶点数据的方法
     {
         float vertices[] = new float[]{//顶点坐标数组
-                0, 0, 0,//原点 x,y,z
-
-
-                -0.9f, 0.9f , 0, //1
-                0.9f, 0.9f  , 0,
-                -0.9f, -0.9f, 0,
-                0.9f, -0.9f , 0,
 
                 -0.8f, 0.4f, 0, //2
                 -0.7f, 0.4f, 0,
@@ -80,17 +73,10 @@ public class PointLine {
                 -0.9f, -0.5f, 0,
                 -0.8f,  -0.5f, 0,
 
-//
         };
         mVertexBuffer = BufferUtil.creatFloatBuffer(vertices);
 
         float colors[] = new float[]{//顶点颜色数组
-                0, 0, 0, 0,//1 rgba 黑色
-
-                1, 0, 0, 0,// // 红
-                0, 1, 0, 0,     // 绿
-                0, 0, 1, 0,     // 蓝
-                1, 0, 1, 0,     // 紫
 
                 1, 0, 0, 0,//2 // 红
                 0, 1, 0, 0, // 绿
@@ -146,7 +132,7 @@ public class PointLine {
         maPositionHandle = GLES30.glGetAttribLocation(mProgram, "aPosition");
         //获取程序中顶点颜色属性引用
         maColorHandle = GLES30.glGetAttribLocation(mProgram, "aColor");
-        GLES30.glLineWidth(10);//设置线的宽度
+        GLES30.glLineWidth(5);//设置线的宽度
     }
 
     //glVertexAttribPointer
@@ -176,44 +162,41 @@ public class PointLine {
         GLES30.glEnableVertexAttribArray(maPositionHandle);
         //启用顶点颜色数据数组
         GLES30.glEnableVertexAttribArray(maColorHandle);
-        // 五个点 1
-        GLES30.glDrawArrays(GLES30.GL_POINTS, 0, 5);
-//        GLES30.glDrawArrays(GLES30.GL_TRIANGLE_STRIP, 0, 5);
 
         // 四个点 2
-        GLES30.glDrawArrays(GLES30.GL_POINTS, 5, 4);
+        GLES30.glDrawArrays(GLES30.GL_POINTS, 0, 4);
         // 两条线
-        GLES30.glDrawArrays(GLES30.GL_LINES, 5, 4);
+        GLES30.glDrawArrays(GLES30.GL_LINES, 0, 4);
 
         // 四个点 3
-        GLES30.glDrawArrays(GLES30.GL_POINTS, 9, 4);
+        GLES30.glDrawArrays(GLES30.GL_POINTS, 4, 4);
         // 两条线
-        GLES30.glDrawArrays(GLES30.GL_LINE_STRIP, 9, 4);
+        GLES30.glDrawArrays(GLES30.GL_LINE_STRIP, 4, 4);
 
         // 四个点 4
-        GLES30.glDrawArrays(GLES30.GL_POINTS, 13, 4);
+        GLES30.glDrawArrays(GLES30.GL_POINTS, 8, 4);
         // 两条线
-        GLES30.glDrawArrays(GLES30.GL_LINE_LOOP, 13, 4);
+        GLES30.glDrawArrays(GLES30.GL_LINE_LOOP, 8, 4);
 
-        // 四个点 5
-        GLES30.glDrawArrays(GLES30.GL_POINTS, 17, 4);
-        // 两条线
-        GLES30.glDrawArrays(GLES30.GL_TRIANGLES, 17, 4);
-
-        // 四个点 6
-        GLES30.glDrawArrays(GLES30.GL_POINTS, 21, 4);
-        // 两条线
-        GLES30.glDrawArrays(GLES30.GL_TRIANGLE_STRIP, 21, 4);
-
-        // 四个点 7
-        GLES30.glDrawArrays(GLES30.GL_POINTS, 25, 4);
-        // 两条线
-        GLES30.glDrawArrays(GLES30.GL_TRIANGLE_FAN, 25, 4);
-
-        // 四个点 8
-        GLES30.glDrawArrays(GLES30.GL_POINTS, 29, 7);
-        // 两条线
-        GLES30.glDrawArrays(GLES30.GL_TRIANGLE_STRIP, 29, 7);
+//        // 四个点 5
+//        GLES30.glDrawArrays(GLES30.GL_POINTS, 12, 4);
+//        // 两条线
+//        GLES30.glDrawArrays(GLES30.GL_TRIANGLES, 12, 4);
+//
+//        // 四个点 6
+//        GLES30.glDrawArrays(GLES30.GL_POINTS, 16, 4);
+//        // 两条线
+//        GLES30.glDrawArrays(GLES30.GL_TRIANGLE_STRIP, 16, 4);
+//
+//        // 四个点 7
+//        GLES30.glDrawArrays(GLES30.GL_POINTS, 20, 4);
+//        // 两条线
+//        GLES30.glDrawArrays(GLES30.GL_TRIANGLE_FAN, 20, 4);
+//
+//        // 四个点 8
+//        GLES30.glDrawArrays(GLES30.GL_POINTS, 24, 7);
+//        // 两条线
+//        GLES30.glDrawArrays(GLES30.GL_TRIANGLE_STRIP, 24, 7);
 
     }
 }

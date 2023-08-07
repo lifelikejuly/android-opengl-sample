@@ -10,8 +10,6 @@ import com.julyyu.learn.opengl.util.ShaderUtil;
 import java.nio.FloatBuffer;
 
 /**
- * @Author: yuhaocan
- * @CreateDate: 2020-02-19
  */
 /// 矩阵 + 面
 public class AddMatrix {

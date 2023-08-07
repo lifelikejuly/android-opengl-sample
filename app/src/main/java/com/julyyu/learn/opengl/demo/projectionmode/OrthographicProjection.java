@@ -1,4 +1,4 @@
-package com.julyyu.learn.opengl.demo.matrix;
+package com.julyyu.learn.opengl.demo.projectionmode;
 
 import android.opengl.GLES30;
 import android.opengl.GLSurfaceView;
@@ -11,9 +11,10 @@ import com.julyyu.learn.opengl.util.ShaderUtil;
 import java.nio.FloatBuffer;
 
 /**
+ * 正交投影
  */
-/// 矩阵 + 面
-public class MatrixSquare {
+
+public class OrthographicProjection {
 
     int mProgram;//自定义渲染管线程序id
     int maPositionHandle; //顶点位置属性引用
@@ -24,33 +25,46 @@ public class MatrixSquare {
     FloatBuffer mVertexBuffer;//顶点坐标数据缓冲
     FloatBuffer mColorBuffer;//顶点着色数据缓冲
     Size size;
-
     final float[] mMVPMatrix = new float[16];
+    private float[] mProjMatrix = new float[16];//4x4矩阵 投影用
+    private float[] mVMatrix = new float[16];//摄像机位置朝向9参数矩阵
 
-    public MatrixSquare(GLSurfaceView mv) {
+    float yAngle = 0;//绕y轴旋转的角度
+    float xAngle = 0;//绕x轴旋转的角度
+
+    float z;
+    float x = 0;
+    float y = 0;
+
+    public OrthographicProjection(GLSurfaceView mv, float z) {
+        this.z = z;
         //调用初始化顶点数据的initVertexData方法
-        initVertexData();
+        initVertexData(z);
         //调用初始化着色器的intShader方法
         initShader(mv);
+
+
     }
 
-    public void initVertexData()//初始化顶点数据的方法
+    public void initVertexData(float z)//初始化顶点数据的方法
     {
         // 四个点坐标
         float vertices[] = new float[]{//顶点坐标数组
-                -1.0f, 1.0f, 0, //1
-                1.0f, 1.0f, 0,
-                -1.0f, -1.0f, 0,
-                1.0f, -1.0f, 0,
+                -1.0f, 1.0f, z, //1
+                1.0f, 1.0f, z,
+                -1.0f, -1.0f, z,
+                1.0f, -1.0f, z,
+
 
         };
         mVertexBuffer = BufferUtil.creatFloatBuffer(vertices);
+        if(z == 0) z = 1;
         // 四个点颜色
         float colors[] = new float[]{//顶点颜色数组
-                1, 0, 0, 0,// // 红
-                0, 1, 0, 0,     // 绿
-                0, 0, 1, 0,     // 蓝
-                1, 0, 1, 0,     // 紫
+                1 / z, 0, 0, 0,// // 红
+                0, 1 / z, 0, 0,     // 绿
+                0, 0, 1 / z, 0,     // 蓝
+                1, 0, 1 / z, 0,     // 紫
 
         };
 
@@ -82,15 +96,27 @@ public class MatrixSquare {
         //指定使用某套shader程序
         GLES30.glUseProgram(mProgram);
 
-        Matrix.orthoM(mMVPMatrix, 0, -1, 1, -1, 1, 0, -1f);
+        Matrix.setIdentityM(mMVPMatrix, 0);
+
+
+        //设置绕y轴旋转yAngle度
+        Matrix.rotateM(mMVPMatrix, 0, yAngle, 0, 1, 0);
+        //设置绕x轴旋转xAngle度
+        Matrix.rotateM(mMVPMatrix, 0, xAngle, 1, 0, 0);
+
+        //将摄像机矩阵乘以变换矩阵
+        Matrix.multiplyMM(mMVPMatrix, 0, mVMatrix, 0, mMVPMatrix, 0);
+        //将投影矩阵乘以上一步的结果矩阵得到最终变换矩阵
+        Matrix.multiplyMM(mMVPMatrix, 0, mProjMatrix, 0, mMVPMatrix, 0);
+
+
         if (size.getWidth() > size.getHeight()) {
-            Matrix.scaleM(mMVPMatrix, 0, size.getHeight() / ((float) size.getWidth()) * 0.85f, 1 * 0.85f, 0);
+            Matrix.scaleM(mMVPMatrix, 0, size.getHeight() / ((float) size.getWidth()) * 0.85f, 1 * 0.85f , 1f);
         } else {
-            Matrix.scaleM(mMVPMatrix, 0, 1 * 0.85f, size.getWidth() / ((float) size.getHeight()) * 0.85f, 0);
+            Matrix.scaleM(mMVPMatrix, 0, 1 * 0.85f, size.getWidth() / ((float) size.getHeight()) * 0.85f, 1f);
         }
 
         GLES30.glUniformMatrix4fv(uMatrixHandle, 1, false, mMVPMatrix, 0);
-
 
         //将顶点位置数据送入渲染管线
         GLES30.glVertexAttribPointer(
@@ -111,22 +137,25 @@ public class MatrixSquare {
         // 五个点 1
         GLES30.glDrawArrays(GLES30.GL_TRIANGLE_STRIP, 0, 4);
 
-
-//        public static final int GL_POINTS                                  = 0x0000;
-//        public static final int GL_LINES                                   = 0x0001;
-//        public static final int GL_LINE_LOOP                               = 0x0002;
-//        public static final int GL_LINE_STRIP                              = 0x0003;
-//        public static final int GL_TRIANGLES                               = 0x0004;
-//        public static final int GL_TRIANGLE_STRIP                          = 0x0005;
-//        public static final int GL_TRIANGLE_FAN                            = 0x0006;
-
-//        GLES30.glDrawArrays(GLES30.GL_, 0, 5);
-//        GLES30.glDrawArrays(GLES30.GL_TRIANGLE_STRIP, 0, 5);
-
-
     }
+
 
     public void setSize(Size size) {
         this.size = size;
+        Matrix.orthoM(
+                mProjMatrix,    //存储生成矩阵元素的float[]类型数组
+                0,                //填充起始偏移量
+                -1,1,    //near面的left、right
+                -1, 1 ,    //near面的bottom、top
+                1, 10        //near面、far面与视点的距离
+        );
+        Matrix.setLookAtM
+                (
+                        mVMatrix,    //存储生成矩阵元素的float[]类型数组
+                        0,            //填充起始偏移量
+                        0, 0, 3f,    //摄像机位置的X、Y、Z坐标
+                        0, 0, 0,    //观察目标点X、Y、Z坐标
+                        0, 1.0f, 0.0f    //up向量在X、Y、Z轴上的分量
+                );
     }
 }
